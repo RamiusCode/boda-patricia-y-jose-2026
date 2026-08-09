@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   PALETA: Azul marino + Dorado elegante
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --azul: #122a4d;        /* azul marino principal (fondos y textos) */
+  --azul-oscuro: #0c1e39; /* azul profundo */
+  --azul-medio: #1b3a63;  /* azul medio */
+  --rosa-claro: #e3b7b3;  /* palo de rosa claro (acentos sobre azul) */
+  --rosa: #c98d88;        /* palo de rosa medio (líneas sobre fondo claro) */
+  --rosa-oscuro: #a35f5a; /* palo de rosa profundo (texto sobre fondo claro) */
+  --blush: #fff0ed;       /* fondo palo rosa de las tarjetas claras */
+}
+
+/* Fondo palo de rosa de las tarjetas claras */
+.fondo-palorosa {
+  background-color: #fff0ed;
+  background-image: url("/imagenes/palorosa.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Fondo con textura para las tarjetas azules.
+   El velo rgba(19,36,70,.8) sobre fondoazul.png (promedio #0d4469)
+   da un promedio final de #122a4d, conservando 20% de la textura. */
+.fondo-azul-textura {
+  background-color: #122a4d;
+  background-image:
+    linear-gradient(rgba(19, 36, 70, 0.8), rgba(19, 36, 70, 0.8)),
+    url("/imagenes/fondoazul.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Tinte de iconos PNG */
+.filtro-azul {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(76%) saturate(684%)
+    hue-rotate(180deg) brightness(100%) contrast(98%);
+}
+
+.filtro-rosa {
+  filter: brightness(0) saturate(100%) invert(82%) sepia(11%) saturate(665%)
+    hue-rotate(316deg) brightness(92%) contrast(93%);
+}
+
+
+/* Fuente personalizada Tangerine */
+@font-face {
+  font-family: 'Tangerine Bold';
+  src: url('/fonts/Tangerine_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-tangerine {
+  font-family: 'Tangerine Bold', cursive !important;
+}
+
+/* Para el nombre */
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+/* Para mis XV años */
+.font-crimson {
+  font-family: 'Crimson Text', serif !important;
+}
+
+/* Para dedicatoria*/
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/*Para texto con Charm */
+.font-charm {
+  font-family: 'Charm', cursive !important;
+}
+
+/* Fuente personalizada Soage */
+@font-face {
+  font-family: 'Soage';
+  src: url('/fonts/Soage PersonalUseOnly.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-soage {
+  font-family: 'Soage', cursive !important;
+}

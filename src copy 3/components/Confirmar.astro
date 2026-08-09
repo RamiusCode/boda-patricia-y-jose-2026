@@ -1,0 +1,466 @@
+---
+// DespedidaBoda.astro
+---
+
+<section class="relative w-full py-4 px-6">
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="max-w-md mx-auto relative z-10" id="wrapper-despedida">
+        <!-- DESPEDIDA -->
+        <div class="text-center opacity-0" id="despedida-content">
+            <!-- Título -->
+            <h3
+                class="text-[#a5822f] tracking-[0.2em] uppercase text-xl md:text-2xl lg:text-2xl xl:text-3xl font-semibold mb-6"
+            >
+                Querida Familia y Amigos
+            </h3>
+
+            <!-- Icono Corazón -->
+            <div class="flex justify-center mb-6">
+                <svg
+                    class="w-8 h-8 md:w-20 md:h-20 text-[#a5822f]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    id="icono-corazon"
+                >
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    ></path>
+                </svg>
+            </div>
+
+            <!-- Mensaje Principal -->
+            <p
+                class="font-charm text-[#0c1e39] text-xl md:text-2xl lg:text-3xl mb-6 leading-relaxed"
+            >
+                Nos llena de felicidad poder compartir con ustedes este momento
+                tan único y especial. Con la esperanza de que hagamos de este
+                día un recuerdo inolvidable. Los esperamos con los corazones
+                llenos de emoción, listos para celebrar el amor y crear memorias
+                que permanezcan siempre en nuestros corazones.
+            </p>
+
+            <!-- Texto Confirmar Asistencia -->
+            <p
+                class="font-charm text-[#a5822f] text-lg md:text-2xl lg:text-3xl xl:text-3xl font-bold mb-4"
+            >
+                Esperamos contar con tu presencia
+            </p>
+
+            <p
+                class="text-[#0c1e39]/70 text-sm md:text-xl lg:text-3xl xl:text-3xl mb-6"
+            >
+                Por favor, confirma tu asistencia haciendo clic en el botón
+            </p>
+
+            <!-- Botón Confirmar con MANO -->
+            <div class="flex items-center justify-center">
+                <div class="relative">
+                    <a
+                        href="https://wa.me/59168665426?text=Me%20complace%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Juan%20Gabriel%20y%20Reina.%20Nos%20vemos%20el%20s%C3%A1bado%2020%20de%20junio.%20%C2%A1Estar%C3%A9%20sin%20falta!"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id="btn-whatsapp-despedida"
+                        class="bg-[#4E5F49]
+                    hover:bg-[#3d4a39] text-white px-8 py-3 rounded text-base
+                    md:text-lg lg:text-xl xl:text-2xl font-semibold
+                    transition-all duration-300 shadow-md hover:shadow-lg
+                    inline-block text-center"
+                    >
+                        Confirmar Asistencia
+                    </a>
+
+                    <!-- MANO apuntando al botón -->
+                    <img
+                        src="/imagenes/mano.png"
+                        alt="Presionar aquí"
+                        class="absolute -bottom-4 -right-4 w-8 h-8 object-contain opacity-0 pointer-events-none z-20"
+                        id="mano-pointer-despedida"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═════════════════════════════════════════════════════════════ -->
+    <!-- 🌸 HOJAS Y FLORES CON MOVIMIENTO NATURAL - ENCIMA DEL CONTENIDO -->
+    <!-- ═════════════════════════════════════════════════════════════ -->
+
+    <!-- LADO IZQUIERDO -->
+    <!-- Hoja dorada izquierda (CAPA INFERIOR) -->
+    <img
+        src="/imagenes/hojadorada.png"
+        alt="hoja dorada"
+        class="absolute left-0 top-12 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-40"
+        id="hoja-despedida-left"
+    />
+
+    <!-- Flor lateral izquierda (CAPA SUPERIOR) -->
+    <img
+        src="/imagenes/florlateral.png"
+        alt="hojas"
+        class="absolute left-0 top-18 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-50"
+        id="flor-despedida-left"
+    />
+
+    <!-- LADO DERECHO -->
+    <!-- Hoja dorada derecha (CAPA INFERIOR) -->
+    <img
+        src="/imagenes/hojadorada.png"
+        alt="hoja dorada"
+        class="absolute right-0 top-12 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-40 scale-x-[-1]"
+        id="hoja-despedida-right"
+    />
+
+    <!-- Flor lateral derecha (CAPA SUPERIOR) -->
+    <img
+        src="/imagenes/florlateral.png"
+        alt="hojas"
+        class="absolute right-0 top-18 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-50 scale-x-[-1]"
+        id="flor-despedida-right"
+    />
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎬 ANIMACIONES CON GSAP                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initDespedidaBoda = () => {
+        console.log("💑 Iniciando componente Despedida de Boda...");
+
+        // ═══ ESTADO INICIAL ═══
+        gsap.set("#despedida-content", {
+            opacity: 0,
+            y: 30,
+        });
+
+        // Flores laterales - Estado inicial
+        gsap.set("#flor-despedida-left", {
+            opacity: 0,
+            x: -40,
+            rotation: -8,
+            scale: 0.9,
+        });
+
+        gsap.set("#flor-despedida-right", {
+            opacity: 0,
+            x: 40,
+            rotation: 8,
+            scaleX: -0.9,
+            scaleY: 0.9,
+        });
+
+        // Hojas doradas - Estado inicial
+        gsap.set("#hoja-despedida-left", {
+            opacity: 0,
+            scale: 0,
+            rotation: -6,
+            transformOrigin: "bottom center",
+        });
+
+        gsap.set("#hoja-despedida-right", {
+            opacity: 0,
+            scaleX: 0,
+            scaleY: 0,
+            rotation: 6,
+            transformOrigin: "bottom center",
+        });
+
+        gsap.set("#mano-pointer-despedida", {
+            opacity: 0,
+            scale: 0.8,
+        });
+
+        // ═══ ANIMACIÓN AL ENTRAR ═══
+        ScrollTrigger.create({
+            trigger: "#wrapper-despedida",
+            start: "top 75%",
+            end: "top 20%",
+
+            onEnter: () => {
+                const tl = gsap.timeline();
+
+                // 1️⃣ CONTENIDO PRINCIPAL
+                tl.to(
+                    "#despedida-content",
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.6,
+                        ease: "power3.out",
+                    },
+                    0,
+                )
+
+                    // 🌸 FLORES LATERALES - Entrada suave
+                    .to(
+                        "#flor-despedida-left",
+                        {
+                            opacity: 0.75,
+                            x: 0,
+                            rotation: -3,
+                            scale: 1,
+                            duration: 2.8,
+                            ease: "sine.out",
+                        },
+                        0,
+                    )
+
+                    .to(
+                        "#flor-despedida-right",
+                        {
+                            opacity: 0.75,
+                            x: 0,
+                            rotation: 3,
+                            scaleX: -1,
+                            scaleY: 1,
+                            duration: 2.8,
+                            ease: "sine.out",
+                        },
+                        0.05,
+                    )
+
+                    // 🍃 HOJAS DORADAS - Crecimiento natural
+                    .to(
+                        "#hoja-despedida-left",
+                        {
+                            opacity: 0.7,
+                            scale: 0.9,
+                            rotation: -3,
+                            duration: 2.2,
+                            ease: "sine.out",
+                        },
+                        0.1,
+                    )
+
+                    .to(
+                        "#hoja-despedida-right",
+                        {
+                            opacity: 0.7,
+                            scaleX: -0.9,
+                            scaleY: 0.9,
+                            rotation: 3,
+                            duration: 2.2,
+                            ease: "sine.out",
+                        },
+                        0.15,
+                    )
+
+                    // 3️⃣ MANO después de todo
+                    .to(
+                        "#mano-pointer-despedida",
+                        {
+                            opacity: 1,
+                            scale: 1,
+                            duration: 0.5,
+                            ease: "back.out(2)",
+                        },
+                        1.8,
+                    );
+
+                // ═══════════════════════════════════════════════════
+                // 🍃 MOVIMIENTOS MÁS NOTORIOS Y NATURALES
+                // ═══════════════════════════════════════════════════
+
+                // Flor izquierda - Movimiento más amplio
+                gsap.to("#flor-despedida-left", {
+                    y: -15,
+                    x: -8,
+                    rotation: -12,
+                    duration: 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3,
+                });
+
+                // Flor derecha - Movimiento más amplio inverso
+                gsap.to("#flor-despedida-right", {
+                    y: -12,
+                    x: 8,
+                    rotation: 12,
+                    duration: 3.3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.2,
+                });
+
+                // Hoja izquierda - Balanceo más pronunciado
+                gsap.to("#hoja-despedida-left", {
+                    y: -18,
+                    rotation: -15,
+                    duration: 3.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.3,
+                });
+
+                // Hoja derecha - Balanceo más pronunciado
+                gsap.to("#hoja-despedida-right", {
+                    y: -16,
+                    rotation: 15,
+                    duration: 3.8,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.5,
+                });
+
+                // ═══ RESPIRACIÓN MÁS VISIBLE ═══
+                gsap.to("#hoja-despedida-left", {
+                    scale: 0.8,
+                    duration: 4,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4,
+                });
+
+                gsap.to("#hoja-despedida-right", {
+                    scaleX: -0.8,
+                    scaleY: 0.8,
+                    duration: 4.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.3,
+                });
+
+                // ═══ MOVIMIENTO HORIZONTAL ADICIONAL (Efecto brisa) ═══
+                gsap.to("#flor-despedida-left", {
+                    x: -12,
+                    duration: 5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.5,
+                });
+
+                gsap.to("#flor-despedida-right", {
+                    x: 12,
+                    duration: 5.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.8,
+                });
+
+                // ═══ ANIMACIÓN DE PRESIONAR BOTÓN (loop infinito) ═══
+                gsap.to("#mano-pointer-despedida", {
+                    scale: 0.9,
+                    duration: 0.6,
+                    ease: "power1.inOut",
+                    repeat: -1,
+                    yoyo: true,
+                    delay: 2.5,
+                });
+            },
+
+            onLeaveBack: () => {
+                // Detener todas las animaciones continuas
+                gsap.killTweensOf("#mano-pointer-despedida");
+                gsap.killTweensOf("#flor-despedida-left");
+                gsap.killTweensOf("#flor-despedida-right");
+                gsap.killTweensOf("#hoja-despedida-left");
+                gsap.killTweensOf("#hoja-despedida-right");
+
+                const tl = gsap.timeline();
+
+                tl.to("#despedida-content, #mano-pointer-despedida", {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.in",
+                })
+
+                    .to(
+                        "#despedida-content",
+                        {
+                            y: 30,
+                            duration: 0.5,
+                            ease: "power2.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#flor-despedida-left",
+                        {
+                            opacity: 0,
+                            x: -40,
+                            duration: 1,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#flor-despedida-right",
+                        {
+                            opacity: 0,
+                            x: 40,
+                            duration: 1,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#hoja-despedida-left, #hoja-despedida-right",
+                        {
+                            opacity: 0,
+                            scale: 0,
+                            duration: 0.8,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#mano-pointer-despedida",
+                        {
+                            scale: 0.8,
+                            duration: 0.5,
+                            ease: "power2.in",
+                        },
+                        "<",
+                    )
+
+                    .set("#flor-despedida-left", {
+                        rotation: -8,
+                        scale: 0.9,
+                        x: -40,
+                        y: 0,
+                    })
+                    .set("#flor-despedida-right", {
+                        rotation: 8,
+                        scaleX: -0.9,
+                        scaleY: 0.9,
+                        x: 40,
+                        y: 0,
+                    })
+                    .set("#hoja-despedida-left", {
+                        rotation: -6,
+                        scale: 0,
+                        y: 0,
+                    })
+                    .set("#hoja-despedida-right", {
+                        scaleX: 0,
+                        scaleY: 0,
+                        rotation: 6,
+                        y: 0,
+                    });
+            },
+        });
+
+        console.log("💑✨ Despedida de Boda con flores y hojas activada!");
+    };
+
+    document.addEventListener("DOMContentLoaded", initDespedidaBoda);
+    document.addEventListener("astro:page-load", initDespedidaBoda);
+</script>

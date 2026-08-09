@@ -1,0 +1,69 @@
+---
+
+---
+
+<div class="tarjeta-ceremonia w-full">
+  <div class="fondo-azul-textura shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+      <h2 class="font-cormorant text-lg text-[#e3b7b3] uppercase font-semibold mb-1">
+        Nuestros Padres
+      </h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+        <span class="text-[#e3b7b3]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#e3b7b3]/80 uppercase mb-1">Padres de la novia</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Claudio Veliz Huanca</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-3">Rosario Lima Cruz</p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+        <span class="text-[#e3b7b3]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#e3b7b3]/80 uppercase mb-1">Madre del novio</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-3">Carmen Gorena Estrada</p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+        <span class="text-[#e3b7b3]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#e3b7b3]/80 uppercase mb-1">Padrinos de anillos</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Basilio Patton Gomez (+)</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Lily Siácara Martinez de Patton</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .rosa-filter {
+    filter: brightness(0) saturate(100%) invert(82%) sepia(11%) saturate(665%) hue-rotate(316deg) brightness(92%) contrast(93%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    ".tarjeta-ceremonia",
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".tarjeta-ceremonia",
+        start: "top 90%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+</script>

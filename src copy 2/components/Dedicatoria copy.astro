@@ -1,0 +1,180 @@
+---
+// Componente Dedicatoria - Diseño sobre con card y fotos polaroid
+---
+
+<section
+  id="dedicatoria"
+  class="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#f0e6d8] overflow-hidden"
+>
+  <div
+    class="dedicatoria-container relative w-full max-w-[320px] sm:max-w-sm mx-auto px-4"
+  >
+    <!-- Sobre (queda detrás del card) -->
+    <div class="relative z-0">
+      <img
+        src="/imagenes/sobre2.png"
+        alt="Sobre de invitación"
+        class="sobre-img w-full block object-contain drop-shadow-2xl"
+      />
+    </div>
+
+    <!-- Card + Sello: empieza a mitad del sobre, alineado a la derecha -->
+    <div class="card-wrapper relative -mt-[46%] ml-auto w-[88%] z-10">
+      <!-- Sello centrado en el borde superior del card -->
+      <div class="sello-wrapper absolute -top-7 left-1/2 -translate-x-1/2 z-20">
+        <img
+          src="/imagenes/boton.png"
+          alt="Sello"
+          class="sello-img w-16 h-16 object-contain drop-shadow-lg"
+        />
+      </div>
+
+      <!-- Card blanco transparente -->
+      <div
+        class="card-content bg-white/30 backdrop-blur-none shadow-2xl px-6 pt-12 pb-8 text-center border border-white/20"
+      >
+        <!-- Texto superior pequeño -->
+        <p
+          class="font-cormorant text-[10px] tracking-[0.28em] text-[#9a8070] uppercase mb-0.5 leading-relaxed"
+        >
+          Con la bendición de Dios
+        </p>
+        <p
+          class="font-cormorant text-[10px] tracking-[0.28em] text-[#9a8070] uppercase mb-3 leading-relaxed"
+        >
+          y nuestros padres
+        </p>
+
+        <!-- Línea decorativa -->
+        <div class="w-14 h-[1px] bg-[#c4a882]/60 mx-auto mb-3"></div>
+
+        <!-- Texto invitación -->
+        <p
+          class="font-cormorant text-[11px] text-[#9a8070] leading-relaxed mb-5"
+        >
+          Invitamos a usted y familia<br />a compartir nuestra unión<br />en
+          matrimonio
+        </p>
+
+        <!-- Nombres grandes -->
+        <h2 class="font-great-vibes text-[2.6rem] leading-tight text-[#1a1a1a]">
+          Juan Gabriel
+        </h2>
+        <h2
+          class="font-great-vibes text-[2.6rem] leading-tight text-[#1a1a1a] mb-5"
+        >
+          &amp; Reina
+        </h2>
+
+        <!-- Línea -->
+        <div class="w-14 h-[1px] bg-[#c4a882]/60 mx-auto mb-4"></div>
+
+        <!-- Fecha -->
+        <p
+          class="font-cormorant text-[10px] tracking-[0.3em] text-[#9a8070] uppercase mb-1"
+        >
+          El próximo
+        </p>
+        <p
+          class="font-cormorant text-base tracking-[0.25em] font-semibold text-[#1a1a1a] uppercase mb-1"
+        >
+          Sábado
+        </p>
+        <p class="font-great-vibes text-[2rem] text-[#1a1a1a]">20.06.26</p>
+      </div>
+    </div>
+
+    <!-- Fotos polaroid -->
+    <div class="fotos-wrapper flex justify-center items-start gap-1 -mt-16 px-2">
+      <!-- Foto 1 - inclinada a la izquierda -->
+      <div
+        class="foto-1 flex-shrink-0 drop-shadow-xl"
+      >
+        <img
+          src="/imagenes/foto2.png"
+          alt="Foto 1"
+          class="w-[175px] h-[215px] object-contain block"
+        />
+      </div>
+
+      <!-- Foto 2 - inclinada a la derecha, levemente más abajo -->
+      <div
+        class="foto-2 flex-shrink-0 mt-7 drop-shadow-xl"
+      >
+        <img
+          src="/imagenes/foto3.png"
+          alt="Foto 2"
+          class="w-[175px] h-[215px] object-contain block"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.set(".sobre-img", { opacity: 0, y: -40 });
+  gsap.set(".card-wrapper", { opacity: 0, y: 30 });
+  gsap.set(".sello-img", { opacity: 0, scale: 0, rotation: -25 });
+  gsap.set(".foto-1", { opacity: 0, x: -40 });
+  gsap.set(".foto-2", { opacity: 0, x: 40 });
+
+  ScrollTrigger.create({
+    trigger: ".dedicatoria-container",
+    start: "top 80%",
+    onEnter: () => {
+      const tl = gsap.timeline();
+      tl.to(".sobre-img", {
+        opacity: 1,
+        y: 0,
+        duration: 1.3,
+        ease: "power3.out",
+      })
+        .to(
+          ".card-wrapper",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.1,
+            ease: "power3.out",
+          },
+          0.4,
+        )
+        .to(
+          ".sello-img",
+          {
+            opacity: 1,
+            scale: 1,
+            rotation: 0,
+            duration: 0.9,
+            ease: "back.out(2)",
+          },
+          0.55,
+        )
+        .to(
+          ".foto-1",
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          1.0,
+        )
+        .to(
+          ".foto-2",
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          1.2,
+        );
+    },
+  });
+</script>

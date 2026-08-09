@@ -1,0 +1,75 @@
+---
+// Detalles.astro
+---
+
+<section class="relative w-full py-2 px-6">
+    <div class="max-w-sm lg:max-w-3xl mx-auto relative z-10" id="contenedor-detalles">
+
+        <div class="backdrop-blur-sm rounded-2xl border-2 border-[#0c1e39]/25 px-8 py-4 shadow-sm relative overflow-hidden">
+
+            <div class="text-center relative flex items-center justify-center gap-4" id="tarjeta-detalles">
+
+                <!-- Icono -->
+                <img
+                    src="/imagenes/calendario.png"
+                    alt="Calendario"
+                    class="w-8 h-8 shrink-0 object-contain dorado-filter"
+                />
+
+                <!-- Mensaje -->
+                <p class="font-charm text-[#0c1e39] text-xl">
+                    La celebración se realizará en un solo día.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .dorado-filter {
+        filter: brightness(0) saturate(100%) invert(56%) sepia(77%)
+            saturate(419%) hue-rotate(5deg) brightness(94%) contrast(92%);
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initDetalles = () => {
+        gsap.set("#contenedor-detalles", { opacity: 0, y: 50, scale: 0.95 });
+        gsap.set("#tarjeta-detalles", { opacity: 0, y: 20 });
+
+        ScrollTrigger.create({
+            trigger: "#contenedor-detalles",
+            start: "top 75%",
+            end: "top 20%",
+
+            onEnter: () => {
+                const tl = gsap.timeline();
+                tl.to("#contenedor-detalles", {
+                    opacity: 1, y: 0, scale: 1, duration: 1.6, ease: "power3.out",
+                }, 0)
+                .to("#tarjeta-detalles", {
+                    opacity: 1, y: 0, duration: 1, ease: "power2.out",
+                }, 0.8);
+            },
+
+            onLeaveBack: () => {
+                const tl = gsap.timeline();
+                tl.to("#tarjeta-detalles", {
+                    opacity: 0, y: 20, duration: 0.3, ease: "power2.in",
+                })
+                .to("#contenedor-detalles", {
+                    opacity: 0, y: 50, scale: 0.95, duration: 0.5, ease: "power2.in",
+                }, "<");
+            },
+        });
+    };
+
+    document.addEventListener("DOMContentLoaded", initDetalles);
+    document.addEventListener("astro:page-load", initDetalles);
+</script>

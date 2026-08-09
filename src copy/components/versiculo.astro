@@ -1,0 +1,39 @@
+---
+---
+<div class="tarjeta-versiculo w-full">
+  <div class="bg-[#f5f0e8] shadow-xl overflow-hidden">
+    <div class="px-4 py-6 text-center">
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+        <span class="text-[#c9a961] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#122a4d] leading-relaxed italic">
+        "Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor."
+      </p>
+
+      <div class="flex items-center gap-2 mt-3">
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+        <span class="text-[#c9a961] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#a5822f] mt-2">1 Corintios 13:13</p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-versiculo",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-versiculo", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

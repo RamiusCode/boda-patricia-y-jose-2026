@@ -1,0 +1,64 @@
+---
+---
+<div class="tarjeta-vestimenta w-full">
+  <div class="bg-[#122a4d] shadow-xl overflow-hidden">
+    <div class="px-3 py-4 text-center">
+
+      <h2 class="font-cormorant text-xl text-[#c9a961] uppercase font-semibold mb-1">Vestimenta</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c9a961]/40"></div>
+        <span class="text-[#c9a961]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]/40"></div>
+      </div>
+
+      <div class="flex justify-center mb-1">
+        <img src="/iconos/vestido-de-novia.png" alt="Vestimenta" class="w-9 h-9 object-contain dorado-filter" />
+      </div>
+
+      <div class="inline-block border border-[#c9a961]/50 rounded-full px-5 py-0.5 mb-1">
+        <p class="font-cormorant text-sm text-[#c9a961] uppercase font-semibold">Formal</p>
+      </div>
+
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Caballeros con traje</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-2">Damas con vestido largo</p>
+
+      <div class="flex items-center gap-2 mb-1">
+        <div class="flex-1 h-px bg-[#c9a961]/40"></div>
+        <span class="text-[#c9a961]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]/40"></div>
+      </div>
+
+      <p class="font-cormorant text-xs text-white/60 italic mb-1">Agradecemos evitar:</p>
+      <div class="flex justify-center gap-5">
+        <div class="flex flex-col items-center gap-0.5">
+          <div class="w-6 h-6 rounded-full bg-white border border-white/50 shadow"></div>
+          <p class="font-cormorant text-xs text-white/60">Blanco</p>
+        </div>
+        <div class="flex flex-col items-center gap-0.5">
+          <div class="w-6 h-6 rounded-full bg-[#2e5248] border border-[#c9a961]/30 shadow"></div>
+          <p class="font-cormorant text-xs text-white/60">Verde</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(75%) sepia(17%) saturate(1070%) hue-rotate(4deg) brightness(91%) contrast(81%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-vestimenta",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-vestimenta", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

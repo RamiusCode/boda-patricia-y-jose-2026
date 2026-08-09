@@ -1,0 +1,86 @@
+---
+
+---
+
+<div class="tarjeta-ceremonia w-full">
+  <div class="bg-[#3b675b] shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+      <div class="flex justify-center mb-2">
+        <img
+          src="/iconos/iglesia.png"
+          alt="Iglesia"
+          class="w-10 h-10 object-contain dorado-filter"
+        />
+      </div>
+
+      <h2
+        class="font-cormorant text-xl text-[#c8b194] uppercase font-semibold mb-1"
+      >
+        Ceremonia
+      </h2>
+
+      <p class="font-cormorant text-base text-white/90 leading-tight mb-1">
+        Salón de Eventos Ciudad Jardín
+      </p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-white/60 mb-4">
+        Av. Moscú 7245, Santa Cruz de la Sierra
+      </p>
+
+      <a
+        href="https://maps.app.goo.gl/9CGsxP2LcBDAji1Q9"
+        target="_blank"
+        class="inline-flex items-center gap-1.5 border border-[#c8b194]/60 text-[#c8b194] font-cormorant text-xs uppercase px-6 py-2 rounded-full hover:bg-[#c8b194]/10 transition-colors"
+      >
+        <svg
+          class="w-3 h-3"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
+          ></path>
+        </svg>
+        Ubicación
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(500%)
+      hue-rotate(345deg) brightness(102%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    ".tarjeta-ceremonia",
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".tarjeta-ceremonia",
+        start: "top 90%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+</script>

@@ -1,0 +1,63 @@
+---
+// src/components/BendicionAjustada.astro
+---
+
+<div class="flex justify-center bg-[#4E5F49]">
+  <div
+    class="w-full max-w-4xl xl:max-w-7xl px-4 py-6 text-center"
+    id="wrapper-bendicion"
+  >
+    <p
+      id="texto-bendicion"
+      class="font-charm text-white text-xl md:text-3xl lg:text-3xl xl:text-4xl leading-snug tracking-wider opacity-0"
+    >
+      "Con la bendición de Dios y acompañados del amor y apoyo de nuestros
+      padres"
+    </p>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initAnim = () => {
+    const el = document.getElementById("texto-bendicion");
+    if (!el) return;
+
+    // 🎯 ESTADO INICIAL - Todo oculto
+    gsap.set(el, { opacity: 0, y: 20 });
+
+    // ✨ ANIMACIÓN QUE SE REPITE AL BAJAR/SUBIR
+    ScrollTrigger.create({
+      trigger: "#wrapper-bendicion",
+      start: "top 90%",
+      end: "top 20%",
+
+      onEnter: () => {
+        // Anima cuando bajas
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power3.out",
+        });
+      },
+
+      onLeaveBack: () => {
+        // Resetea cuando subes
+        gsap.to(el, {
+          opacity: 0,
+          y: 20,
+          duration: 0.4,
+          ease: "power2.in",
+        });
+      },
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", initAnim);
+  document.addEventListener("astro:page-load", initAnim);
+</script>

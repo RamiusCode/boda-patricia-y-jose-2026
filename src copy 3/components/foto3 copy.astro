@@ -1,0 +1,293 @@
+---
+// FotoZoom3.astro - Foto 3 con animación elegante para boda
+---
+
+<section
+    class="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden"
+>
+    <!-- Fondo con imagen ESTÁTICA -->
+    <div class="absolute inset-0 z-0">
+        <img
+            id="parallax-image-3"
+            src="/imagenes/foto3.webp"
+            alt="Fotografía de boda"
+            class="w-full h-full object-cover opacity-0"
+        />
+        <div class="absolute inset-0 bg-black/30 opacity-0" id="overlay-3">
+        </div>
+    </div>
+
+    <!-- Partículas flotantes elegantes -->
+    <div
+        class="absolute inset-0 z-5 pointer-events-none"
+        id="particles-container-3"
+    >
+        <div
+            class="particle-3 absolute top-[10%] left-[10%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[15%] right-[15%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[25%] left-[20%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[30%] right-[25%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[35%] left-[50%] w-2 h-2 bg-white/80 rounded-full shadow-[0_0_18px_rgba(255,255,255,1)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[40%] left-[15%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[45%] right-[10%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[50%] left-[30%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[55%] right-[35%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[60%] left-[45%] w-2 h-2 bg-white/80 rounded-full shadow-[0_0_18px_rgba(255,255,255,1)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[65%] right-[20%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[70%] left-[25%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[75%] right-[40%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[80%] left-[35%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[85%] right-[30%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[20%] left-[40%] w-2 h-2 bg-white/80 rounded-full shadow-[0_0_18px_rgba(255,255,255,1)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[48%] right-[50%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[62%] left-[60%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[38%] right-[45%] w-1 h-1 bg-white/60 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)] opacity-0"
+        >
+        </div>
+        <div
+            class="particle-3 absolute top-[72%] left-[55%] w-1.5 h-1.5 bg-white/70 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] opacity-0"
+        >
+        </div>
+    </div>
+
+    <!-- Indicador de scroll elegante -->
+    <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 opacity-0"
+        id="scroll-indicator-3"
+    >
+        <svg
+            class="w-6 h-6 text-white/60"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("📸 Iniciando animaciones de foto 3...");
+
+            const image = document.querySelector("#parallax-image-3");
+            const overlay = document.querySelector("#overlay-3");
+            const particles = document.querySelectorAll(".particle-3");
+            const scrollIndicator = document.querySelector(
+                "#scroll-indicator-3",
+            );
+
+            // Estado inicial
+            gsap.set(image, { scale: 1.3, opacity: 0 });
+            gsap.set(overlay, { opacity: 0 });
+            gsap.set(particles, { opacity: 0, scale: 0 });
+            gsap.set(scrollIndicator, { opacity: 0, y: -10 });
+
+            // Animación con ScrollTrigger
+            ScrollTrigger.create({
+                trigger: "#parallax-image-3",
+                start: "top bottom",
+                end: "top 20%",
+
+                onEnter: () => {
+                    const tl = gsap.timeline();
+
+                    // 1️⃣ Imagen - Zoom suave y elegante
+                    tl.to(
+                        image,
+                        {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 2.5,
+                            ease: "power2.out",
+                        },
+                        0,
+                    )
+
+                        // 2️⃣ Overlay - Aparición suave
+                        .to(
+                            overlay,
+                            {
+                                opacity: 1,
+                                duration: 2,
+                                ease: "power1.out",
+                            },
+                            0.3,
+                        )
+
+                        // 3️⃣ Partículas - Aparición escalonada elegante
+                        .to(
+                            particles,
+                            {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 1.5,
+                                stagger: {
+                                    each: 0.08,
+                                    from: "random",
+                                },
+                                ease: "power2.out",
+                            },
+                            0.8,
+                        )
+
+                        // 4️⃣ Indicador de scroll
+                        .to(
+                            scrollIndicator,
+                            {
+                                opacity: 0.6,
+                                y: 0,
+                                duration: 1,
+                                ease: "power2.out",
+                            },
+                            1.5,
+                        );
+
+                    // 5️⃣ Flotación continua suave de partículas
+                    particles.forEach((particle, index) => {
+                        gsap.to(particle, {
+                            x: `${gsap.utils.random(-20, 20)}`,
+                            y: `${gsap.utils.random(-30, 30)}`,
+                            duration: gsap.utils.random(8, 12),
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut",
+                            delay: index * 0.1,
+                        });
+
+                        // Efecto de brillo pulsante muy sutil
+                        gsap.to(particle, {
+                            opacity: gsap.utils.random(0.4, 0.8),
+                            duration: gsap.utils.random(3, 5),
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut",
+                            delay: index * 0.15,
+                        });
+                    });
+
+                    // 6️⃣ Animación de rebote suave del indicador
+                    gsap.to(scrollIndicator, {
+                        y: 10,
+                        duration: 2,
+                        repeat: -1,
+                        yoyo: true,
+                        ease: "sine.inOut",
+                        delay: 2,
+                    });
+                },
+
+                onLeaveBack: () => {
+                    // Detener animaciones
+                    gsap.killTweensOf(particles);
+                    gsap.killTweensOf(scrollIndicator);
+
+                    const tl = gsap.timeline();
+
+                    tl.to(scrollIndicator, {
+                        opacity: 0,
+                        y: -10,
+                        duration: 0.4,
+                        ease: "power2.in",
+                    })
+                        .to(
+                            particles,
+                            {
+                                opacity: 0,
+                                scale: 0,
+                                duration: 0.6,
+                                stagger: 0.03,
+                                ease: "power2.in",
+                            },
+                            0,
+                        )
+                        .to(
+                            overlay,
+                            {
+                                opacity: 0,
+                                duration: 0.5,
+                                ease: "power1.in",
+                            },
+                            0,
+                        )
+                        .to(
+                            image,
+                            {
+                                scale: 1.3,
+                                opacity: 0,
+                                duration: 0.8,
+                                ease: "power2.in",
+                            },
+                            0,
+                        );
+                },
+            });
+
+            console.log("✨ Animación de foto 3 lista!");
+        });
+    }
+</script>

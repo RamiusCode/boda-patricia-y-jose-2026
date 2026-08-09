@@ -1,0 +1,498 @@
+---
+// src/components/ReproductorBodaHorizontal.astro
+---
+
+<div class="flex items-center justify-center p-4">
+  <div class="w-full max-w-[420px] relative group" id="player-wedding">
+    <!-- Partículas doradas sutiles -->
+    <div
+      class="absolute inset-0 overflow-hidden rounded-[1.5rem] pointer-events-none"
+    >
+      <div
+        class="absolute top-3 right-8 w-0.5 h-0.5 bg-amber-300/40 rounded-full animate-pulse-slow"
+      >
+      </div>
+      <div
+        class="absolute bottom-3 left-10 w-0.5 h-0.5 bg-amber-200/35 rounded-full animate-pulse-medium"
+      >
+      </div>
+      <div
+        class="absolute top-1/2 right-12 w-0.3 h-0.3 bg-amber-100/30 rounded-full"
+      >
+      </div>
+    </div>
+
+    <!-- Halo sutil dorado -->
+    <div
+      class="absolute -inset-1 bg-gradient-to-r from-amber-300/8 via-transparent to-amber-200/5 rounded-[1.8rem] blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+    >
+    </div>
+
+    <!-- Card principal horizontal con BLUR -->
+    <div
+      class="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-[1.5rem] p-5 shadow-2xl shadow-black/20 hover:shadow-amber-500/10 transition-all duration-300 overflow-hidden"
+    >
+      <!-- Destello dorado sutil -->
+      <div
+        class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-amber-300/20 to-transparent rounded-full blur-xl"
+      >
+      </div>
+
+      <!-- Layout horizontal - Botón a la izquierda -->
+      <div class="flex items-center justify-between gap-5">
+        <!-- Lado izquierdo: Botón Play -->
+        <div class="flex flex-col items-center gap-3">
+          <!-- Botón Play/Pause principal -->
+          <button
+            id="btn-play-toggle"
+            class="group/play w-12 h-12 bg-gradient-to-br from-white/95 to-white/85 hover:from-white hover:to-amber-50 rounded-full flex items-center justify-center text-[#1b3a63] shadow-lg shadow-black/20 hover:shadow-amber-300/30 transition-all duration-250 active:scale-95 relative"
+            aria-label="Reproducir/Pausar"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-amber-200/15 to-transparent rounded-full opacity-0 group-hover/play:opacity-100 transition-opacity duration-250"
+            >
+            </div>
+            <div class="relative">
+              <svg
+                id="svg-play"
+                class="w-4 h-4 fill-current ml-0.5 transition-transform duration-200 group-hover/play:scale-110"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+              <svg
+                id="svg-pause"
+                class="w-4 h-4 fill-current hidden transition-transform duration-200 group-hover/play:scale-110"
+                viewBox="0 0 24 24"
+              >
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
+              </svg>
+            </div>
+          </button>
+
+          <!-- Controles secundarios -->
+          <div class="flex items-center gap-2.5">
+            <button
+              id="btn-prev"
+              class="group/prev w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-200 active:scale-90"
+              aria-label="Anterior"
+            >
+              <svg
+                class="w-3 h-3 text-white/50 group-hover/prev:text-amber-200 transition-colors duration-200"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
+              </svg>
+            </button>
+
+            <button
+              id="btn-next"
+              class="group/next w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-all duration-200 active:scale-90"
+              aria-label="Siguiente"
+            >
+              <svg
+                class="w-3 h-3 text-white/50 group-hover/next:text-amber-200 transition-colors duration-200"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Volumen mini -->
+          <div class="flex items-center gap-1.5">
+            <svg
+              class="w-2.5 h-2.5 text-white/40"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <div class="w-14 h-1 bg-white/8 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-gradient-to-r from-white/30 to-white/15 rounded-full"
+                style="width: 70%;"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Separador sutil -->
+        <div class="w-px h-12 bg-white/10"></div>
+
+        <!-- Lado derecho: Info y progreso -->
+        <div class="flex-1 min-w-0">
+          <!-- Título compacto -->
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg
+                class="w-3 h-3 text-amber-200/70"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"
+                ></path>
+              </svg>
+              <span
+                class="text-[10px] tracking-[0.25em] uppercase text-amber-200/60 font-light truncate"
+                >Nuestra Canción</span
+              >
+            </div>
+
+            <h3
+              class="text-white font-serif italic text-lg font-light truncate drop-shadow-sm"
+            >
+              Eterna Melodía
+            </h3>
+            <p class="text-xs text-white/50 mt-1 font-light truncate">
+              3:45 • Amor Eterno
+            </p>
+          </div>
+
+          <!-- Barra de progreso horizontal compacta -->
+          <div class="space-y-2">
+            <div
+              class="relative h-1.5 bg-white/8 rounded-full overflow-hidden group/track"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-fast"
+              >
+              </div>
+              <div
+                id="fill-progress"
+                class="absolute top-0 left-0 h-full bg-gradient-to-r from-amber-300/90 to-amber-200/95 rounded-full w-0 transition-all duration-200 shadow-sm shadow-amber-300/30"
+              >
+              </div>
+              <div
+                class="absolute top-1/2 left-0 w-2.5 h-2.5 -translate-y-1/2 bg-white border-2 border-amber-300/50 rounded-full shadow-md shadow-amber-300/20 opacity-0 group-hover/track:opacity-100 transition-opacity duration-150"
+              >
+              </div>
+              <input
+                type="range"
+                id="audio-range"
+                value="0"
+                step="0.1"
+                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+              />
+            </div>
+
+            <!-- Tiempos inline -->
+            <div
+              class="flex justify-between text-[10px] text-white/50 font-light"
+            >
+              <span id="time-curr" class="flex items-center gap-1.5">
+                <svg
+                  class="w-2 h-2 text-amber-200/50"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                0:00
+              </span>
+              <span id="time-total">3:45</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estado sutil inferior -->
+      <div class="absolute bottom-2 left-1/2 -translate-x-1/2">
+        <div class="flex items-center gap-1.5">
+          <div class="w-1 h-1 bg-amber-300/40 rounded-full animate-pulse-slow">
+          </div>
+          <span
+            class="text-[7px] tracking-[0.2em] uppercase text-white/30 font-light"
+            >EN REPRODUCCIÓN</span
+          >
+          <div class="w-1 h-1 bg-amber-300/40 rounded-full animate-pulse-slow">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="wedding-audio" preload="metadata">
+  <source src="/musica/melodia.mp3" type="audio/mpeg" />
+</audio>
+
+<script>
+  const initPlayer = () => {
+    const audio = document.getElementById("wedding-audio");
+    const btnToggle = document.getElementById("btn-play-toggle");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
+    const fill = document.getElementById("fill-progress");
+    const range = document.getElementById("audio-range");
+    const svgPlay = document.getElementById("svg-play");
+    const svgPause = document.getElementById("svg-pause");
+    const timeCurr = document.getElementById("time-curr");
+    const timeTotal = document.getElementById("time-total");
+
+    if (!audio || !btnToggle) return;
+
+    // Formateador de tiempo
+    const formatTime = (seconds) => {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, "0")}`;
+    };
+
+    // Actualizar tiempos
+    const updateTime = () => {
+      if (timeCurr) {
+        const icon = `<svg class="w-2 h-2 text-amber-200/50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>`;
+        timeCurr.innerHTML = `${icon} ${formatTime(audio.currentTime)}`;
+      }
+    };
+
+    // Control Play/Pause
+    btnToggle.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play().catch((e) => console.log("Audio:", e));
+        svgPlay?.classList.add("hidden");
+        svgPause?.classList.remove("hidden");
+
+        // Efecto sutil
+        btnToggle.animate(
+          [
+            { transform: "scale(1)" },
+            { transform: "scale(0.92)" },
+            { transform: "scale(1)" },
+          ],
+          {
+            duration: 150,
+            easing: "ease-out",
+          },
+        );
+      } else {
+        audio.pause();
+        svgPlay?.classList.remove("hidden");
+        svgPause?.classList.add("hidden");
+      }
+    });
+
+    // Actualizar progreso
+    audio.addEventListener("timeupdate", () => {
+      if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+
+        if (fill) {
+          fill.style.width = `${progress}%`;
+
+          // Mover punto indicador
+          const thumb = fill.parentElement?.querySelector(".absolute.w-2\\.5");
+          if (thumb) thumb.style.left = `${progress}%`;
+        }
+
+        if (range) range.value = progress.toString();
+        updateTime();
+      }
+    });
+
+    // Carga de metadatos
+    audio.addEventListener("loadedmetadata", () => {
+      if (timeTotal) {
+        timeTotal.textContent = formatTime(audio.duration);
+      }
+    });
+
+    // Control manual de barra
+    range?.addEventListener("input", (e) => {
+      const value = parseInt(e.target.value);
+      if (audio.duration) {
+        audio.currentTime = (value / 100) * audio.duration;
+      }
+    });
+
+    // Controles prev/next
+    btnPrev?.addEventListener("click", () => {
+      if (audio.duration) {
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+        btnPrev.animate(
+          [
+            { transform: "translateX(0)" },
+            { transform: "translateX(-2px)" },
+            { transform: "translateX(0)" },
+          ],
+          { duration: 100, easing: "ease-out" },
+        );
+      }
+    });
+
+    btnNext?.addEventListener("click", () => {
+      if (audio.duration) {
+        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        btnNext.animate(
+          [
+            { transform: "translateX(0)" },
+            { transform: "translateX(2px)" },
+            { transform: "translateX(0)" },
+          ],
+          { duration: 100, easing: "ease-out" },
+        );
+      }
+    });
+
+    // Animación de entrada
+    setTimeout(() => {
+      const card = document.querySelector(
+        "#player-wedding .relative.bg-white\\/10",
+      );
+      if (card) {
+        card.animate(
+          [
+            { opacity: 0, transform: "translateY(5px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          {
+            duration: 400,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            fill: "forwards",
+          },
+        );
+      }
+    }, 50);
+  };
+
+  // Inicialización
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPlayer);
+  } else {
+    initPlayer();
+  }
+
+  // Para Astro
+  document.addEventListener("astro:page-load", initPlayer);
+</script>
+
+<style>
+  /* Importación de tipografía */
+  @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@200;300;400&display=swap");
+
+  .font-serif {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Animaciones */
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes pulse-medium {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes shimmer-fast {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-medium {
+    animation: pulse-medium 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer-fast {
+    animation: shimmer-fast 2s infinite linear;
+  }
+
+  /* Estilos para range input */
+  input[type="range"] {
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* Transiciones suaves */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Efecto de vidrio mejorado */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    #player-wedding {
+      max-width: 360px;
+    }
+
+    .flex-col.gap-3 {
+      gap: 0.5rem;
+    }
+
+    button {
+      min-width: 28px;
+      min-height: 28px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    #player-wedding {
+      max-width: 320px;
+    }
+  }
+
+  /* Hover effects */
+  #player-wedding:hover .relative.bg-white\/10 {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+
+  /* Mejorar accesibilidad */
+  button:focus-visible {
+    outline: 2px solid rgba(251, 191, 36, 0.5);
+    outline-offset: 2px;
+    border-radius: 9999px;
+  }
+
+  /* Evitar texto seleccionable en controles */
+  button {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+</style>

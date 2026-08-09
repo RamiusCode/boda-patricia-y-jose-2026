@@ -1,0 +1,136 @@
+---
+// Portada.astro
+---
+
+<section
+    id="portada-sobre"
+    class="fixed inset-0 w-full h-screen z-50 overflow-hidden"
+    style="background-color: #f4f0e6;"
+>
+    <!-- SOBRE - fondo que ocupa todo el ancho de la pantalla -->
+    <img
+        id="sobre-img"
+        src="/imagenes/sobreportada.png"
+        alt="Sobre de invitación"
+        class="absolute top-0 left-0 w-full h-full object-cover object-top"
+    />
+
+    <!-- SELLO / BOTÓN - centrado sobre la imagen -->
+    <div class="absolute inset-0 flex items-center justify-center z-20">
+        <button
+            id="btn-sello"
+            class="cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none"
+        >
+            <img
+                src="/imagenes/boton.png"
+                alt="Sello"
+                class="w-28 h-28 md:w-32 md:h-32"
+                style="filter: drop-shadow(0 5px 16px rgba(18, 42, 77, 0.4));"
+            />
+        </button>
+    </div>
+
+    <!-- TEXTO - posicionado sobre la portada -->
+    <div
+        id="texto-portada"
+        class="absolute bottom-[12%] left-0 right-0 text-center z-20 px-6 flex flex-col items-center"
+    >
+        <p
+            class="font-cormorant uppercase tracking-[0.32em] text-sm md:text-base font-semibold"
+            style="color: #122a4d;"
+        >
+            DALE CLIC AL SELLO
+        </p>
+        <p
+            class="font-cormorant uppercase tracking-normal text-sm md:text-base font-medium mt-0.5"
+            style="color: #122a4d;"
+        >
+            PARA INGRESAR A LA INVITACIÓN
+        </p>
+        <p
+            class="font-crimson italic text-xl md:text-2xl mt-4"
+            style="color: #122a4d;"
+        >
+            Atentamente:
+        </p>
+        <h2
+            class="font-soage text-3xl md:text-4xl mt-2 leading-tight"
+            style="color: #c98d88;"
+        >
+            Patricia Milena<br/>
+            <span class="font-cormorant text-xl" style="color: #122a4d;">&</span><br/>
+            Jose Oliver
+        </h2>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnSello = document.getElementById("btn-sello");
+        const portada = document.getElementById("portada-sobre");
+
+        gsap.from("#btn-sello", {
+            scale: 0.8,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)",
+            delay: 0.5,
+        });
+
+        gsap.to("#btn-sello", {
+            scale: 1.05,
+            duration: 2.5,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+        });
+
+        gsap.from("#texto-portada", {
+            opacity: 0,
+            y: 18,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: 0.4,
+        });
+
+        btnSello?.addEventListener("click", () => {
+            const audio = new Audio("/musica/melodia.mp3");
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch((error: any) => {
+                console.log("Error al reproducir audio:", error);
+            });
+
+            (window as any).audioGlobal = audio;
+            (window as any).estaReproduciendoGlobal = true;
+
+            setTimeout(() => {
+                const iconoPlay = document.getElementById("icono-play-global");
+                const iconoPause = document.getElementById("icono-pause-global");
+                if (iconoPlay && iconoPause) {
+                    iconoPlay.classList.add("hidden");
+                    iconoPause.classList.remove("hidden");
+                }
+            }, 100);
+
+            gsap.to(portada, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                    document.body.style.overflow = "auto";
+                },
+                onComplete: () => {
+                    portada?.remove();
+                },
+            });
+        });
+    });
+</script>
+
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>

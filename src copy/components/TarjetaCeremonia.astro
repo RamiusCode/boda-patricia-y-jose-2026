@@ -1,0 +1,60 @@
+---
+
+---
+
+<div class="tarjeta-ceremonia w-full">
+  <div class="bg-[#122a4d] shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+      <h2 class="font-cormorant text-lg text-[#c9a961] uppercase font-semibold mb-1">
+        Nuestros Padres
+      </h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c9a961]/25"></div>
+        <span class="text-[#c9a961]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#c9a961]/80 uppercase mb-1">Padres del novio</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Adolfo Félix Balcazar Sánchez</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-3">Kitty Ribera Ortiz</p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c9a961]/25"></div>
+        <span class="text-[#c9a961]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#c9a961]/80 uppercase mb-1">Padres de la novia</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Luis Antonio Soto Zapana</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Roxana Barba Aguilera</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(75%) sepia(17%) saturate(1070%) hue-rotate(4deg) brightness(91%) contrast(81%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    ".tarjeta-ceremonia",
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".tarjeta-ceremonia",
+        start: "top 90%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+</script>

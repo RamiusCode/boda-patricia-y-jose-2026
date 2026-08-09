@@ -1,0 +1,418 @@
+---
+// src/components/PadresPadrinos.astro - Con animaciones elegantes
+---
+
+<section class="w-full flex justify-center relative">
+  <!-- ═══ HOJAS DORADAS ═══ -->
+  <img
+    src="/imagenes/hojadorada.png"
+    alt=""
+    class="absolute top-20 -left-2 w-16 md:w-16 lg:w-28 opacity-0 pointer-events-none z-10"
+    id="hoja-dorada-familia-izq"
+  />
+
+  <img
+    src="/imagenes/hojadorada.png"
+    alt=""
+    class="absolute top-90 md:top-40 -right-2 w-16 md:w-16 lg:w-28 opacity-0 pointer-events-none z-10 scale-x-[-1]"
+    id="hoja-dorada-familia-der"
+  />
+
+  <div class="w-full max-w-5xl px-8 py-8 text-center" id="wrapper-familia">
+    <!-- Grid de nombres de los padres y padrinos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+      <!-- Padres del novio-->
+      <div class="space-y-4 opacity-0" id="padres-novio">
+        <h4
+          class="text-[#a5822f] tracking-[0.2em] uppercase text-lg md:text-2xl lg:text-2xl xl:text-3xl font-semibold"
+        >
+          Padres del novio
+        </h4>
+        <div class="space-y-2">
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Gualberto Picha Paco
+          </p>
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Silvia Serrudo Murillo
+          </p>
+        </div>
+      </div>
+
+      <!-- Padres de la novia -->
+      <div class="space-y-4 opacity-0" id="padres-novia">
+        <h4
+          class="text-[#a5822f] tracking-[0.2em] uppercase text-lg md:text-2xl lg:text-2xl xl:text-3xl font-semibold"
+        >
+          Padres de la Novia
+        </h4>
+        <div class="space-y-2">
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Víctor Quinteros Arciénega
+          </p>
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Esperanza Barrón Durán
+          </p>
+        </div>
+      </div>
+
+      <!-- Nombre de los padrinos - CENTRADO -->
+      <!-- <div
+        class="space-y-4 opacity-0 md:col-span-2 md:flex md:flex-col md:items-center"
+        id="padrinos"
+      >
+        <h4
+          class="text-[#a5822f] tracking-[0.2em] uppercase text-lg md:text-2xl lg:text-2xl xl:text-3xl font-semibold"
+        >
+          Nuestros Padrinos
+        </h4>
+        <div class="space-y-2">
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Raul Marin Baldivieso
+          </p>
+          <p
+            class="font-charm text-[#0c1e39] text-xl md:text-3xl lg:text-3xl xl:text-4xl"
+          >
+            Yakelin Andia Gutierrez
+          </p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initFamily = () => {
+    console.log("👨‍👩‍👧‍👦 Iniciando animaciones de familia...");
+
+    // 🎯 ESTADO INICIAL
+    gsap.set("#padres-novio", { opacity: 0, x: -30, y: 15 });
+    gsap.set("#padres-novia", { opacity: 0, x: 30, y: 15 });
+    gsap.set("#padrinos", { opacity: 0, y: 30 });
+
+    // Flores laterales (ENCIMA)
+    gsap.set("#hoja-familia-izq", {
+      opacity: 0,
+      x: -40,
+      y: 20,
+      rotation: -15,
+      scale: 0.8,
+    });
+    gsap.set("#hoja-familia-der", {
+      opacity: 0,
+      x: 40,
+      y: 20,
+      rotation: 15,
+      scaleX: -0.8,
+      scaleY: 0.8,
+    });
+
+    // Hojas doradas (ABAJO)
+    gsap.set("#hoja-dorada-familia-izq", {
+      opacity: 0,
+      x: -50,
+      y: 25,
+      rotation: -20,
+      scale: 0.7,
+    });
+    gsap.set("#hoja-dorada-familia-der", {
+      opacity: 0,
+      x: 50,
+      y: 25,
+      rotation: 20,
+      scaleX: -0.7,
+      scaleY: 0.7,
+    });
+
+    // ✨ ANIMACIÓN DE ENTRADA
+    ScrollTrigger.create({
+      trigger: "#wrapper-familia",
+      start: "top bottom",
+      end: "top 20%",
+
+      onEnter: () => {
+        const tl = gsap.timeline();
+
+        // 1️⃣ Padres del novio - Desliza desde izquierda
+        tl.to(
+          "#padres-novio",
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          0,
+        )
+          // 2️⃣ Padres de la novia - Desliza desde derecha
+          .to(
+            "#padres-novia",
+            {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              duration: 1.2,
+              ease: "power2.out",
+            },
+            0.3,
+          )
+          // 3️⃣ Padrinos - Aparece desde abajo
+          .to(
+            "#padrinos",
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.2,
+              ease: "power2.out",
+            },
+            0.6,
+          )
+          // 4️⃣ FLORES LATERALES (ENCIMA) - Caída suave
+          .to(
+            "#hoja-familia-izq",
+            {
+              opacity: 0.8,
+              x: 0,
+              y: 0,
+              rotation: 0,
+              scale: 1,
+              duration: 1.6,
+              ease: "power1.out",
+            },
+            0.9,
+          )
+          .to(
+            "#hoja-familia-der",
+            {
+              opacity: 0.8,
+              x: 0,
+              y: 0,
+              rotation: 0,
+              scaleX: -1,
+              scaleY: 1,
+              duration: 1.6,
+              ease: "power1.out",
+            },
+            1.0,
+          )
+          // 5️⃣ HOJAS DORADAS (ABAJO) - Entrada elegante
+          .to(
+            "#hoja-dorada-familia-izq",
+            {
+              opacity: 0.9,
+              x: 0,
+              y: 0,
+              rotation: 0,
+              scale: 1,
+              duration: 1.8,
+              ease: "power1.out",
+            },
+            1.2,
+          )
+          .to(
+            "#hoja-dorada-familia-der",
+            {
+              opacity: 0.9,
+              x: 0,
+              y: 0,
+              rotation: 0,
+              scaleX: -1,
+              scaleY: 1,
+              duration: 1.8,
+              ease: "power1.out",
+            },
+            1.3,
+          );
+
+        // ═══════════════════════════════════════════════════
+        // 🍃 MOVIMIENTOS NATURALES SUAVES
+        // ═══════════════════════════════════════════════════
+
+        // Flor lateral izquierda
+        gsap.to("#hoja-familia-izq", {
+          y: -10,
+          x: -5,
+          rotation: -8,
+          duration: 3.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 2.5,
+        });
+
+        // Flor lateral derecha
+        gsap.to("#hoja-familia-der", {
+          y: -8,
+          x: 5,
+          rotation: 8,
+          duration: 3.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 2.7,
+        });
+
+        // Hoja dorada izquierda
+        gsap.to("#hoja-dorada-familia-izq", {
+          y: -12,
+          rotation: -10,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 2.8,
+        });
+
+        // Hoja dorada derecha
+        gsap.to("#hoja-dorada-familia-der", {
+          y: -11,
+          rotation: 10,
+          duration: 4.3,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 3,
+        });
+
+        // ═══ RESPIRACIÓN SUTIL ═══
+        gsap.to("#hoja-dorada-familia-izq", {
+          scale: 0.85,
+          duration: 4.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 3.2,
+        });
+
+        gsap.to("#hoja-dorada-familia-der", {
+          scaleX: -0.85,
+          scaleY: 0.85,
+          duration: 5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 3.5,
+        });
+
+        // ═══ EFECTO BRISA ═══
+        gsap.to("#hoja-familia-izq", {
+          x: -8,
+          duration: 5.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 3.8,
+        });
+
+        gsap.to("#hoja-familia-der", {
+          x: 8,
+          duration: 6,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 4,
+        });
+      },
+
+      onLeaveBack: () => {
+        // Detener animaciones continuas
+        gsap.killTweensOf("#hoja-familia-izq");
+        gsap.killTweensOf("#hoja-familia-der");
+        gsap.killTweensOf("#hoja-dorada-familia-izq");
+        gsap.killTweensOf("#hoja-dorada-familia-der");
+
+        const tl = gsap.timeline();
+
+        tl.to(
+          "#padres-novio, #padres-novia, #padrinos, #hoja-familia-izq, #hoja-familia-der, #hoja-dorada-familia-izq, #hoja-dorada-familia-der",
+          {
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.in",
+          },
+        )
+          .to(
+            "#padres-novio",
+            { x: -30, y: 15, duration: 0.6, ease: "power2.in" },
+            "<",
+          )
+          .to(
+            "#padres-novia",
+            { x: 30, y: 15, duration: 0.6, ease: "power2.in" },
+            "<",
+          )
+          .to("#padrinos", { y: 30, duration: 0.6, ease: "power2.in" }, "<")
+          .to(
+            "#hoja-familia-izq",
+            {
+              x: -40,
+              y: 20,
+              rotation: -15,
+              scale: 0.8,
+              duration: 0.6,
+              ease: "power2.in",
+            },
+            "<",
+          )
+          .to(
+            "#hoja-familia-der",
+            {
+              x: 40,
+              y: 20,
+              rotation: 15,
+              scaleX: -0.8,
+              scaleY: 0.8,
+              duration: 0.6,
+              ease: "power2.in",
+            },
+            "<",
+          )
+          .to(
+            "#hoja-dorada-familia-izq",
+            {
+              x: -50,
+              y: 25,
+              rotation: -20,
+              scale: 0.7,
+              duration: 0.6,
+              ease: "power2.in",
+            },
+            "<",
+          )
+          .to(
+            "#hoja-dorada-familia-der",
+            {
+              x: 50,
+              y: 25,
+              rotation: 20,
+              scaleX: -0.7,
+              scaleY: 0.7,
+              duration: 0.6,
+              ease: "power2.in",
+            },
+            "<",
+          );
+      },
+    });
+
+    console.log("✨ Animaciones de familia listas!");
+  };
+
+  document.addEventListener("DOMContentLoaded", initFamily);
+  document.addEventListener("astro:page-load", initFamily);
+</script>

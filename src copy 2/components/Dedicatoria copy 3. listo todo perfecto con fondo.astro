@@ -1,0 +1,231 @@
+---
+// Componente Dedicatoria - Diseño sobre con card y fotos polaroid
+---
+
+<section
+  id="dedicatoria"
+  class="relative w-full py-16 md:py-24 flex flex-col items-center justify-center bg-[#f0e6d8] overflow-hidden"
+>
+  <div
+    class="dedicatoria-container relative w-full max-w-[320px] sm:max-w-sm mx-auto px-4"
+  >
+    <!-- Sobre (queda detrás del card) -->
+    <div class="relative z-0">
+      <img
+        src="/imagenes/sobre2.png"
+        alt="Sobre de invitación"
+        class="sobre-img w-full block object-contain drop-shadow-2xl"
+      />
+    </div>
+
+    <!-- Card + Sello: empieza a mitad del sobre, alineado a la derecha -->
+    <div class="card-wrapper relative -mt-[8%] ml-auto w-[88%] z-10">
+      <!-- Sello centrado en el borde superior del card -->
+      <div class="sello-wrapper absolute -top-7 left-1/2 -translate-x-1/2 z-20">
+        <img
+          src="/imagenes/boton.png"
+          alt="Sello"
+          class="sello-img w-16 h-16 object-contain drop-shadow-lg"
+        />
+      </div>
+
+      <!-- Card blanco transparente -->
+      <div
+        class="card-content bg-white/30 backdrop-blur-none shadow-2xl px-6 pt-12 pb-16 text-center border border-white/20"
+      >
+        <!-- Texto superior pequeño -->
+        <p
+          class="deco-bendicion font-cormorant text-sm tracking-normal text-[#3b675b] uppercase mb-0 leading-tight"
+        >
+          Con la bendición de Dios
+        </p>
+        <p
+          class="deco-bendicion font-cormorant text-sm tracking-normal text-[#3b675b] uppercase mb-2 leading-tight"
+        >
+          y nuestros padres
+        </p>
+
+        <!-- Línea decorativa -->
+        <div class="linea-deco w-14 h-[1px] bg-[#c8b194]/60 mx-auto mb-2"></div>
+
+        <!-- Texto invitación -->
+        <p
+          class="texto-invitacion font-cormorant text-base text-[#3b675b] leading-tight mb-4"
+        >
+          Invitamos a usted y familia<br />a compartir nuestra unión<br />en
+          matrimonio
+        </p>
+
+        <!-- Nombres grandes -->
+        <h2 class="nombre-novio font-soage text-[1.8rem] leading-tight text-[#c8b194]">
+          Gustavo Adolfo
+        </h2>
+        <h2
+          class="nombre-novio font-soage text-[1.8rem] leading-tight text-[#c8b194] mb-5"
+        >
+          &amp; Clarita Albina
+        </h2>
+
+        <!-- Línea -->
+        <div class="linea-deco w-14 h-[1px] bg-[#c8b194]/60 mx-auto mb-2"></div>
+
+        <!-- Fecha -->
+        <p
+          class="texto-fecha font-cormorant text-sm tracking-[0.2em] text-[#3b675b] uppercase mb-0"
+        >
+          a realizarse el dia
+        </p>
+        <p
+          class="texto-fecha font-cormorant text-lg tracking-[0.25em] font-semibold text-[#c8b194] uppercase mb-0"
+        >
+          Domingo
+        </p>
+        <div class="bloque-fecha flex flex-col items-center mt-1 gap-1">
+          <div class="flex items-center justify-center gap-2 w-full">
+            <div class="flex-1 h-[1px] bg-[#c8b194]"></div>
+            <span class="text-[#c8b194] text-xs">✦</span>
+            <div class="flex-1 h-[1px] bg-[#c8b194]"></div>
+          </div>
+          <span class="font-crimson text-[1.2rem] tracking-[0.3em] text-[#c8b194] font-semibold">26|07|2026</span>
+          <div class="flex items-center justify-center gap-2 w-full">
+            <div class="flex-1 h-[1px] bg-[#c8b194]"></div>
+            <span class="text-[#c8b194] text-xs">✦</span>
+            <div class="flex-1 h-[1px] bg-[#c8b194]"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fotos polaroid -->
+    <div class="fotos-wrapper flex justify-center items-start gap-1 -mt-16 px-2">
+      <!-- Foto 1 - inclinada a la izquierda -->
+      <div class="foto-1 flex-shrink-0 drop-shadow-xl flex flex-col items-center relative">
+        <img
+          src="/imagenes/hojaslateral.png"
+          alt="Hojas decorativas"
+          class="hojas-deco w-[100px] object-contain absolute -top-20 -left-8 z-0"
+        />
+        <img
+          src="/imagenes/foto2.png"
+          alt="Foto 1"
+          class="w-[175px] h-[215px] object-contain block relative z-10"
+        />
+      </div>
+
+      <!-- Foto 2 - inclinada a la derecha, levemente más abajo -->
+      <div
+        class="foto-2 flex-shrink-0 mt-16 -ml-16 drop-shadow-xl"
+      >
+        <img
+          src="/imagenes/foto3.png"
+          alt="Foto 2"
+          class="w-[175px] h-[215px] object-contain block"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const ease = "power3.out";
+
+  // Sobre
+  gsap.fromTo(".sobre-img",
+    { opacity: 0, y: -50 },
+    { opacity: 1, y: 0, duration: 1.4, ease,
+      scrollTrigger: { trigger: ".sobre-img", start: "top 88%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Card
+  gsap.fromTo(".card-wrapper",
+    { opacity: 0, y: 50, scale: 0.96 },
+    { opacity: 1, y: 0, scale: 1, duration: 1.2, ease,
+      scrollTrigger: { trigger: ".card-wrapper", start: "top 85%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Sello
+  gsap.fromTo(".sello-img",
+    { opacity: 0, scale: 0, rotation: -30 },
+    { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: "back.out(2.5)", delay: 0.3,
+      scrollTrigger: { trigger: ".card-wrapper", start: "top 85%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Textos bendición
+  gsap.fromTo(".deco-bendicion",
+    { opacity: 0, y: 18 },
+    { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease,
+      scrollTrigger: { trigger: ".deco-bendicion", start: "top 88%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Líneas decorativas
+  gsap.fromTo(".linea-deco",
+    { opacity: 0, scaleX: 0 },
+    { opacity: 1, scaleX: 1, duration: 0.7, stagger: 0.2, ease,
+      scrollTrigger: { trigger: ".linea-deco", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Texto invitación
+  gsap.fromTo(".texto-invitacion",
+    { opacity: 0, y: 16, filter: "blur(4px)" },
+    { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease,
+      scrollTrigger: { trigger: ".texto-invitacion", start: "top 88%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Nombres novios
+  gsap.fromTo(".nombre-novio",
+    { opacity: 0, y: 22, letterSpacing: "0.2em" },
+    { opacity: 1, y: 0, letterSpacing: "0em", duration: 1.1, stagger: 0.2, ease,
+      scrollTrigger: { trigger: ".nombre-novio", start: "top 88%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Texto fecha
+  gsap.fromTo(".texto-fecha",
+    { opacity: 0, y: 14 },
+    { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease,
+      scrollTrigger: { trigger: ".texto-fecha", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Bloque fecha
+  gsap.fromTo(".bloque-fecha",
+    { opacity: 0, scale: 0.9 },
+    { opacity: 1, scale: 1, duration: 0.9, ease: "back.out(1.5)", delay: 0.3,
+      scrollTrigger: { trigger: ".bloque-fecha", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Fotos polaroid
+  gsap.fromTo(".foto-1",
+    { opacity: 0, x: -50, rotation: -4 },
+    { opacity: 1, x: 0, rotation: 0, duration: 1.2, ease,
+      scrollTrigger: { trigger: ".fotos-wrapper", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  gsap.fromTo(".foto-2",
+    { opacity: 0, x: 50, rotation: 4 },
+    { opacity: 1, x: 0, rotation: 0, duration: 1.2, ease, delay: 0.2,
+      scrollTrigger: { trigger: ".fotos-wrapper", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // Hojas: salen de abajo una vez que foto-1 termina (~1.2s)
+  gsap.fromTo(".hojas-deco",
+    { opacity: 0, y: 60 },
+    { opacity: 1, y: 0, duration: 1.3, ease: "power2.out", delay: 0.5,
+      scrollTrigger: { trigger: ".fotos-wrapper", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

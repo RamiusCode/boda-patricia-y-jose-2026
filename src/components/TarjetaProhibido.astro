@@ -1,0 +1,45 @@
+---
+---
+<div class="tarjeta-prohibido w-full">
+  <div class="fondo-azul-textura shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/restriccion.png" alt="Restricción" class="w-10 h-10 object-contain rosa-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#e3b7b3] uppercase font-semibold mb-1">Solo Adultos</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+        <span class="text-[#e3b7b3]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-white/80 leading-snug">
+        Adoramos a tus pequeños, sin embargo este evento está destinado
+        <span class="text-[#e3b7b3] font-semibold">solo para adultos.</span>
+        ¡Esperamos tu comprensión!
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .rosa-filter {
+    filter: brightness(0) saturate(100%) invert(82%) sepia(11%) saturate(665%) hue-rotate(316deg) brightness(92%) contrast(93%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-prohibido",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-prohibido", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

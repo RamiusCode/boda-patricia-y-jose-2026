@@ -1,0 +1,45 @@
+---
+---
+<div class="tarjeta-restriccion w-full">
+  <div class="bg-[#3b675b] shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/restriccion.png" alt="Restricción" class="w-10 h-10 object-contain dorado-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#c8b194] uppercase font-semibold mb-1">Solo Adultos</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-white/80 leading-snug">
+        Adoramos a tus pequeños, sin embargo este evento está destinado
+        <span class="text-[#c8b194]">solo para adultos.</span>
+        ¡Esperamos tu comprensión!
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(500%) hue-rotate(345deg) brightness(102%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-restriccion",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-restriccion", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

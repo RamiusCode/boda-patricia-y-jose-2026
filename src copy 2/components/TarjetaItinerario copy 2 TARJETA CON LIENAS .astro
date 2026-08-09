@@ -1,0 +1,85 @@
+---
+const eventos = [
+  { hora: "17:00", texto: "Ceremonia religiosa",  icono: "/iconos/iglesia.png",   lado: "izq" },
+  { hora: "18:00", texto: "Ceremonia civil",       icono: "/iconos/iglesia.png",   lado: "der" },
+  { hora: "18:30", texto: "Recepción social",      icono: "/iconos/recepcion.png", lado: "izq" },
+  { hora: "19:30", texto: "Entrada y vals",        icono: "/iconos/entrada.png",   lado: "der" },
+  { hora: "20:30", texto: "Cena",                  icono: "/iconos/cena.png",      lado: "izq" },
+  { hora: "21:30", texto: "Bouquet",               icono: "/iconos/despedida.png", lado: "der" },
+  { hora: "22:00", texto: "Corte del pastel",      icono: "/iconos/torta.png",     lado: "izq" },
+];
+---
+
+<div class="tarjeta-itinerario w-full">
+  <div class="bg-white shadow-xl overflow-hidden">
+    <div class="px-3 py-5">
+
+      <!-- Título -->
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+        <h2 class="font-cormorant text-lg text-[#3b675b] uppercase font-semibold px-2">Itinerario</h2>
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative px-2">
+
+        <!-- Línea central vertical -->
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1.5px] bg-[#c8b194]/60"></div>
+
+        <div class="flex flex-col gap-0">
+          {eventos.map((e, i) => (
+            <div>
+
+              <!-- Evento -->
+              <div class="flex items-center py-1 relative z-10 gap-1">
+                {e.lado === "izq" ? (
+                  <>
+                    <div class="flex flex-col items-center justify-center w-[40%]">
+                      <img src={e.icono} alt={e.texto} class="w-7 h-7 object-contain verde-filter" />
+                    </div>
+                    <div class="flex-1 h-px bg-[#c8b194]/60"></div>
+                    <div class="flex flex-col items-center justify-center text-center w-[40%]">
+                      <p class="font-cormorant text-xs text-[#3b675b] font-semibold leading-tight">{e.texto}</p>
+                      <p class="font-crimson text-sm text-[#c8b194] font-semibold">{e.hora}</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div class="flex flex-col items-center justify-center text-center w-[40%]">
+                      <p class="font-cormorant text-xs text-[#3b675b] font-semibold leading-tight">{e.texto}</p>
+                      <p class="font-crimson text-sm text-[#c8b194] font-semibold">{e.hora}</p>
+                    </div>
+                    <div class="flex-1 h-px bg-[#c8b194]/60"></div>
+                    <div class="flex flex-col items-center justify-center w-[40%]">
+                      <img src={e.icono} alt={e.texto} class="w-7 h-7 object-contain verde-filter" />
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .verde-filter {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(30%) saturate(600%) hue-rotate(115deg) brightness(80%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-itinerario",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-itinerario", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

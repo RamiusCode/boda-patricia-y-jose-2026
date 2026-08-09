@@ -1,0 +1,53 @@
+---
+const ALBUM = "https://photos.app.goo.gl/yJvjzp7GKrwVkVdG9";
+---
+<div class="tarjeta-fotos w-full">
+  <div class="fondo-palorosa shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/foto.png" alt="Cámara" class="w-12 h-12 object-contain azul-filter" />
+      </div>
+
+      <h2 class="font-soage text-[1.7rem] leading-tight text-[#a35f5a] mb-1">Comparte tus Fotos</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+        <span class="text-[#c98d88] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#122a4d] leading-relaxed mb-4">
+        Te invitamos a compartir tus fotografías de nuestra boda
+      </p>
+
+      <a href={ALBUM} target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-1.5 bg-[#1b3a63] text-[#e3b7b3] font-cormorant text-xs uppercase px-6 py-2 rounded-full hover:bg-[#1b3a63]/90 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        Compartir Fotos
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .azul-filter {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(76%) saturate(684%) hue-rotate(180deg) brightness(100%) contrast(98%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-fotos",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-fotos", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

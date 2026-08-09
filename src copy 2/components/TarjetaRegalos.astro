@@ -1,0 +1,51 @@
+---
+---
+<div class="tarjeta-regalos w-full">
+  <div class="fondo-palorosa shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/torta.png" alt="Regalos" class="w-10 h-10 object-contain azul-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#122a4d] uppercase font-semibold mb-1">Sugerencia de Regalos</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+        <span class="text-[#c98d88] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#122a4d] leading-tight mb-1">El mejor regalo es su presencia.</p>
+      <p class="font-cormorant text-xs text-[#122a4d] leading-tight mb-2">Si desean un detalle especial, pueden hacerlo mediante este QR.</p>
+
+      <!-- QR ancho completo -->
+      <div class="w-full mb-2 overflow-hidden border border-[#c98d88]/40">
+        <img src="/imagenes/qr.png" alt="QR" class="w-full object-contain"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="hidden w-full h-24 items-center justify-center bg-[#fff0ed]">
+          <p class="font-cormorant text-xs text-[#a35f5a]/60">QR</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .azul-filter {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(76%) saturate(684%) hue-rotate(180deg) brightness(100%) contrast(98%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-regalos",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-regalos", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

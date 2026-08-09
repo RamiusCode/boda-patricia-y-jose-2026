@@ -1,0 +1,49 @@
+---
+---
+<div class="tarjeta-vestimenta w-full">
+  <div class="fondo-azul-textura shadow-xl overflow-hidden">
+    <div class="px-3 py-4 text-center">
+
+      <h2 class="font-cormorant text-xl text-[#e3b7b3] uppercase font-semibold mb-1">Vestimenta</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+        <span class="text-[#e3b7b3]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+      </div>
+
+      <div class="flex justify-center mb-1">
+        <img src="/iconos/vestido-de-novia.png" alt="Vestimenta" class="w-9 h-9 object-contain rosa-filter" />
+      </div>
+
+      <div class="inline-block border border-[#e3b7b3]/50 rounded-full px-5 py-0.5 mb-1">
+        <p class="font-cormorant text-sm text-[#e3b7b3] uppercase font-semibold">Formal</p>
+      </div>
+
+      <!--
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-1">
+        Agradecemos tu elegancia<br/>en este día tan especial
+      </p>
+      -->
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .rosa-filter {
+    filter: brightness(0) saturate(100%) invert(82%) sepia(11%) saturate(665%) hue-rotate(316deg) brightness(92%) contrast(93%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-vestimenta",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-vestimenta", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

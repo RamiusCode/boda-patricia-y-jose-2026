@@ -1,0 +1,58 @@
+---
+const eventos = [
+  { hora: "17:00", texto: "Ceremonia religiosa" },
+  { hora: "18:00", texto: "Ceremonia civil" },
+  { hora: "18:30", texto: "Recepción social" },
+  { hora: "19:30", texto: "Entrada y vals" },
+  { hora: "20:30", texto: "Cena" },
+  { hora: "21:30", texto: "Lanzamiento del bouquet" },
+  { hora: "22:00", texto: "Corte del pastel" },
+];
+---
+<div class="tarjeta-itinerario w-full">
+  <div class="bg-white shadow-xl overflow-hidden">
+    <div class="px-3 py-6">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/entrada.png" alt="Itinerario" class="w-10 h-10 object-contain verde-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#3b675b] uppercase font-semibold text-center mb-1">Itinerario</h2>
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#c8b194]/50"></div>
+        <span class="text-[#c8b194] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/50"></div>
+      </div>
+
+      <div class="flex flex-col">
+        {eventos.map((e) => (
+          <div class="flex items-center gap-2 py-1 border-b border-[#3b675b]/10 last:border-0">
+            <p class="font-crimson text-sm text-[#c8b194] font-semibold w-11 flex-shrink-0 text-right">{e.hora}</p>
+            <div class="w-1.5 h-1.5 rounded-full bg-[#3b675b] flex-shrink-0"></div>
+            <p class="font-cormorant text-sm text-[#3b675b]">{e.texto}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .verde-filter {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(30%) saturate(600%) hue-rotate(115deg) brightness(80%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-itinerario",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-itinerario", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

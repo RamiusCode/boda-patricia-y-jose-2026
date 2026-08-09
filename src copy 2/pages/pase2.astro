@@ -1,0 +1,58 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Portada from "../components/Portada.astro";
+import NombresFlores from "../components/NombresFlores.astro";
+import Dedicatoria from "../components/Dedicatoria.astro";
+import Reproductor from "../components/Reproductor.astro";
+import Bendicion from "../components/Bendicion.astro";
+import NombrePadres from "../components/NombresPadres.astro";
+import Fecha from "../components/Fecha.astro";
+import Contador from "../components/Contador.astro";
+import Foto2 from "../components/Foto2.astro";
+import DireccionCeremonia from "../components/DireccionCeremonia.astro";
+import DireccionRecepcion from "../components/DireccionRecepcion.astro";
+import Detalles from "../components/Detalles.astro";
+import Itinerario from "../components/Itinerario.astro";
+import Reservas from "../components/Reservas.astro";
+import SugerenciaRegalo from "../components/SugerenciaRegalo.astro";
+import CodigoVestimenta from "../components/CodigoVestimenta.astro";
+import Restriccion from "../components/Restriccion.astro";
+import Confirmar from "../components/Confirmar.astro";
+import DespedidaDedicatoria from "../components/DespedidaDedicatoria.astro";
+import Foto3 from "../components/foto3.astro";
+import Foto4 from "../components/foto4.astro";
+import Des from "../components/Des.astro";
+import GaleriaFoto from "../components/GaleriaFoto.astro";
+---
+
+<Layout title="Boda">
+    <!-- PORTADA (se muestra primero, bloquea scroll) -->
+    <Portada />
+
+    <!-- CONTENIDO PRINCIPAL (oculto hasta que se presione el sobre) -->
+    <div id="contenido-principal">
+        <NombresFlores />
+        <Dedicatoria />
+        <!-- <Reproductor /> -->
+        <Bendicion />
+        <NombrePadres />
+        <Fecha />
+        <Contador />
+        <Foto2 />
+        <DireccionCeremonia />
+        <DireccionRecepcion />
+        <Detalles />
+        <Itinerario />
+        <Foto3 />
+        <Reservas numeroPases={2} />
+        <!-- <SugerenciaRegalo /> -->
+        <CodigoVestimenta />
+        <Restriccion />
+        <Confirmar />
+        <!-- <GaleriaFoto /> -->
+        <DespedidaDedicatoria />
+        <Foto4 />
+        <Des />
+    </div>
+</Layout>

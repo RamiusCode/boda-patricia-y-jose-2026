@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   PALETA: Azul marino + Dorado elegante
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --azul: #122a4d;        /* azul marino principal (fondos y textos) */
+  --azul-oscuro: #0c1e39; /* azul profundo */
+  --azul-medio: #1b3a63;  /* azul medio */
+  --dorado: #c9a961;      /* dorado elegante (acentos sobre azul) */
+  --dorado-oscuro: #a5822f; /* dorado profundo (texto sobre fondo claro) */
+  --crema: #f5f0e8;       /* crema de tarjetas */
+}
+
+/* Tinte de iconos PNG */
+.filtro-azul {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(76%) saturate(684%)
+    hue-rotate(180deg) brightness(100%) contrast(98%);
+}
+
+.filtro-dorado {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(17%) saturate(1070%)
+    hue-rotate(4deg) brightness(91%) contrast(81%);
+}
+
+
+/* Fuente personalizada Tangerine */
+@font-face {
+  font-family: 'Tangerine Bold';
+  src: url('/fonts/Tangerine_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-tangerine {
+  font-family: 'Tangerine Bold', cursive !important;
+}
+
+/* Para el nombre */
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+/* Para mis XV años */
+.font-crimson {
+  font-family: 'Crimson Text', serif !important;
+}
+
+/* Para dedicatoria*/
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/*Para texto con Charm */
+.font-charm {
+  font-family: 'Charm', cursive !important;
+}
+
+/* Fuente personalizada Soage */
+@font-face {
+  font-family: 'Soage';
+  src: url('/fonts/Soage PersonalUseOnly.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-soage {
+  font-family: 'Soage', cursive !important;
+}

@@ -1,0 +1,67 @@
+---
+const mensaje = encodeURIComponent("Me complace confirmar mi asistencia a la boda de Gustavo Adolfo y Clarita Albina. Nos vemos el domingo 26 de julio. ¡Estaré sin falta!");
+const wa1 = `https://wa.me/59175505445?text=${mensaje}`;
+const wa2 = `https://wa.me/59163392736?text=${mensaje}`;
+---
+
+<div class="tarjeta-confirmar w-full">
+
+  <div class="bg-[#f5f0e8] shadow-xl overflow-hidden" style="border-radius: 90px 90px 0 0;">
+    <div class="px-3 py-6 text-center">
+
+      <!-- Icono -->
+      <div class="flex justify-center mb-2">
+        <svg class="w-9 h-9" viewBox="0 0 24 24" fill="#122a4d">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#122a4d] uppercase font-semibold mb-1">Confirmar Asistencia</h2>
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+        <span class="text-[#c9a961] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c9a961]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#122a4d] leading-snug mb-4">
+        Por favor confirma tu asistencia haciendo clic en el botón
+      </p>
+
+      <!-- Botones WhatsApp -->
+      <div class="flex flex-col gap-2">
+        <a href={wa1} target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-[#122a4d] text-[#c9a961] font-cormorant text-xs uppercase px-6 py-2 rounded-full hover:bg-[#122a4d]/90 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.856L.057 23.428a.5.5 0 00.609.61l5.684-1.49A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.878 9.878 0 01-5.032-1.378l-.36-.214-3.733.979.997-3.645-.235-.374A9.86 9.86 0 012.1 12C2.1 6.533 6.533 2.1 12 2.1S21.9 6.533 21.9 12 17.467 21.9 12 21.9z"/>
+          </svg>
+          +591 75505445
+        </a>
+
+        <a href={wa2} target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-[#122a4d] text-[#c9a961] font-cormorant text-xs uppercase px-6 py-2 rounded-full hover:bg-[#122a4d]/90 transition-colors">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.856L.057 23.428a.5.5 0 00.609.61l5.684-1.49A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.878 9.878 0 01-5.032-1.378l-.36-.214-3.733.979.997-3.645-.235-.374A9.86 9.86 0 012.1 12C2.1 6.533 6.533 2.1 12 2.1S21.9 6.533 21.9 12 17.467 21.9 12 21.9z"/>
+          </svg>
+          +591 63392736
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-confirmar",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-confirmar", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

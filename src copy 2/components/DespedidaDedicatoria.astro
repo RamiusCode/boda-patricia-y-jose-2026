@@ -1,0 +1,92 @@
+---
+// DedicatoriaDespedida.astro - Dedicatoria elegante para despedida
+---
+
+<div class="flex justify-center mt-16 bg-[#4E5F49]">
+    <div
+        class="w-full max-w-4xl xl:max-w-7xl px-4 py-6 text-center"
+        id="wrapper-dedicatoria"
+    >
+        <p
+            id="texto-dedicatoria"
+            class="font-charm text-white text-xl md:text-2xl lg:text-3xl xl:text-3xl leading-snug tracking-wider opacity-0 mb-4"
+        >
+            El amor nunca se da por vencido, jamás pierde la fe, siempre tiene
+            esperanza y se mantiene firme en toda circunstancia
+        </p>
+
+        <p
+            id="referencia-dedicatoria"
+            class="font-cormorant text-[#C9A961] text-base md:text-xl lg:text-2xl tracking-[0.35em] md:tracking-[0.4em] uppercase opacity-0"
+        >
+            1 Corintios 13:7
+        </p>
+    </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initDedicatoriaAnim = () => {
+        const texto = document.getElementById("texto-dedicatoria");
+        const referencia = document.getElementById("referencia-dedicatoria");
+        if (!texto || !referencia) return;
+
+        console.log("💝 Iniciando componente Dedicatoria Despedida...");
+
+        // 🎯 ESTADO INICIAL - Todo oculto
+        gsap.set(texto, { opacity: 0, y: 20 });
+        gsap.set(referencia, { opacity: 0, y: 10 });
+
+        // ✨ ANIMACIÓN QUE SE REPITE AL BAJAR/SUBIR
+        ScrollTrigger.create({
+            trigger: "#wrapper-dedicatoria",
+            start: "top 90%",
+            end: "top 20%",
+
+            onEnter: () => {
+                // Anima el texto principal primero
+                gsap.to(texto, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.5,
+                    ease: "power3.out",
+                });
+
+                // Luego la referencia bíblica
+                gsap.to(referencia, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    delay: 0.3,
+                    ease: "power3.out",
+                });
+            },
+
+            onLeaveBack: () => {
+                // Resetea cuando subes
+                gsap.to(texto, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.4,
+                    ease: "power2.in",
+                });
+
+                gsap.to(referencia, {
+                    opacity: 0,
+                    y: 10,
+                    duration: 0.4,
+                    ease: "power2.in",
+                });
+            },
+        });
+
+        console.log("💝✨ Dedicatoria Despedida activada!");
+    };
+
+    document.addEventListener("DOMContentLoaded", initDedicatoriaAnim);
+    document.addEventListener("astro:page-load", initDedicatoriaAnim);
+</script>
