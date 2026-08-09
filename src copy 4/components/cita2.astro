@@ -1,0 +1,68 @@
+---
+// cita2.astro — Cita de apertura, entre la foto de portada y la dedicatoria
+---
+
+<section
+  id="cita2"
+  class="relative w-full flex justify-center overflow-hidden px-8 py-6"
+>
+  <div class="w-full max-w-[400px] text-center">
+    <p
+      class="cita2-texto font-cormorant italic text-base md:text-lg leading-relaxed text-[#122a4d]"
+    >
+      "Andábamos sin buscarnos pero sabiendo que andábamos para encontrarnos"
+    </p>
+
+    <div class="cita2-deco flex items-center justify-center gap-2.5 my-2">
+      <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#c98d88]"></div>
+      <span class="text-[#c98d88] text-[10px]">✦</span>
+      <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#c98d88]"></div>
+    </div>
+
+    <p
+      class="cita2-texto font-cormorant text-sm md:text-base tracking-[0.18em] uppercase text-[#a35f5a]"
+    >
+      Julio Cortázar
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    ".cita2-texto",
+    { opacity: 0, y: 22, filter: "blur(4px)" },
+    {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 1.2,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#cita2",
+        start: "top 88%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+
+  gsap.fromTo(
+    ".cita2-deco",
+    { opacity: 0, scaleX: 0.4 },
+    {
+      opacity: 1,
+      scaleX: 1,
+      duration: 0.9,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#cita2",
+        start: "top 90%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+</script>

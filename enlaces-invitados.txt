@@ -1,0 +1,38 @@
+ENLACES DE PRUEBA — LOCALHOST
+Levantar servidor:  npm run dev
+Generado desde "lista de invitados.txt" — 26 invitados
+
+═══ INVITACIÓN GENÉRICA ═══
+Sin nombre de invitado y sin pases reservados.
+   http://localhost:4321/
+
+═══ INVITACIONES PERSONALIZADAS ═══
+
+Nº  INVITADO                                 PASES  ENLACE
+─────────────────────────────────────────────────────────────────────────────────────────────────────
+ 1  Roberto Valencia y Flia.                     3  http://localhost:4321/roberto-valencia-y-flia
+ 2  Siria Renejo                                 1  http://localhost:4321/siria-renejo
+ 3  Victor Hugo Veliz y Flia.                    4  http://localhost:4321/victor-hugo-veliz-y-flia
+ 4  Ana Isabel Veliz Lima                        2  http://localhost:4321/ana-isabel-veliz-lima
+ 5  Cristhian Mendoza Veliz                      3  http://localhost:4321/cristhian-mendoza-veliz
+ 6  Victor Hugo Anzaldo Veliz                    2  http://localhost:4321/victor-hugo-anzaldo-veliz
+ 7  Maria Jose Anzaldo Veliz                     2  http://localhost:4321/maria-jose-anzaldo-veliz
+ 8  Katerin Paredes Lima                         2  http://localhost:4321/katerin-paredes-lima
+ 9  Juan Pablo Bautista y Sra.                   2  http://localhost:4321/juan-pablo-bautista-y-sra
+10  Eduardo Sanches y Sra.                       2  http://localhost:4321/eduardo-sanches-y-sra
+11  Guadalupe Veliz y Flia.                      2  http://localhost:4321/guadalupe-veliz-y-flia
+12  Milena Veliz Gutierrez                       2  http://localhost:4321/milena-veliz-gutierrez
+13  Rildo Adhemar Veliz y Flia.                  3  http://localhost:4321/rildo-adhemar-veliz-y-flia
+14  Lily Siacara Martinez de Patton y Flia.      3  http://localhost:4321/lily-siacara-martinez-de-patton-y-flia
+15  Sheyla Saique Quispe                         2  http://localhost:4321/sheyla-saique-quispe
+16  Nelson Jimenez y Sra.                        2  http://localhost:4321/nelson-jimenez-y-sra
+17  Mariela Pozo Crespo                          2  http://localhost:4321/mariela-pozo-crespo
+18  Lizeth Rojas Cespedes                        2  http://localhost:4321/lizeth-rojas-cespedes
+19  Silvia Cano                                  2  http://localhost:4321/silvia-cano
+20  Danitza Padilla                              2  http://localhost:4321/danitza-padilla
+21  Sabino Veliz Huanca y Tatiana Veliz          2  http://localhost:4321/sabino-veliz-huanca-y-tatiana-veliz
+22  Vidal Sanchez y Sra.                         2  http://localhost:4321/vidal-sanchez-y-sra
+23  Ramon Guzman Saavedra y Sra.                 0  http://localhost:4321/ramon-guzman-saavedra-y-sra
+24  Hugo Lima y Sra.                             2  http://localhost:4321/hugo-lima-y-sra
+25  Victoriano Veliz Huanca y Sra.               2  http://localhost:4321/victoriano-veliz-huanca-y-sra
+26  Generico Sin Nombre                          2  http://localhost:4321/generico-sin-nombre

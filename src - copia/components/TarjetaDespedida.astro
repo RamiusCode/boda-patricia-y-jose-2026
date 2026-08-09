@@ -1,0 +1,54 @@
+---
+---
+<div class="tarjeta-despedida w-full relative">
+  <img
+    src="/imagenes/hojaslateral.png"
+    alt="Hojas decorativas"
+    class="absolute top-44 -left-24 w-[130px] object-contain z-0"
+  />
+  <div class="fondo-azul-textura shadow-xl overflow-hidden relative z-10">
+    <div class="px-3 py-6 text-center">
+
+      <h2 class="font-cormorant text-xl text-[#e3b7b3] uppercase font-semibold mb-1">Querida Familia y Amigos</h2>
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+        <span class="text-[#e3b7b3]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-white/85 leading-relaxed mb-3">
+        Nos llena de felicidad poder compartir con ustedes este momento tan único y especial.
+      </p>
+
+      <p class="font-cormorant text-sm text-white/85 leading-relaxed mb-3">
+        Con la esperanza de que hagamos de este día un recuerdo inolvidable.
+      </p>
+
+      <p class="font-cormorant text-sm text-white/85 leading-relaxed mb-4">
+        Los esperamos con los corazones llenos de emoción, listos para celebrar el amor y crear memorias que permanezcan siempre en nuestros corazones.
+      </p>
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+        <span class="text-[#e3b7b3]/60 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#e3b7b3]/40"></div>
+      </div>
+
+      <p class="font-soage text-[1.6rem] text-[#e3b7b3] leading-tight">Te esperamos</p>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-despedida",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-despedida", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

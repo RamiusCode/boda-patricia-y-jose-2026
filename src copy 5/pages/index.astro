@@ -1,0 +1,223 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Portada from "../components/Portada.astro";
+import NombresFlores from "../components/NombresFlores.astro";
+import Cita2 from "../components/cita2.astro";
+import Dedicatoria from "../components/Dedicatoria.astro";
+import TarjetaHistoria from "../components/TarjetaHistoria.astro";
+import TarjetaCeremonia from "../components/TarjetaCeremonia.astro";
+import TarjetaRecepcion from "../components/TarjetaRecepcion.astro";
+import TarjetaItinerario from "../components/TarjetaItinerario.astro";
+import TarjetaVestimenta from "../components/TarjetaVestimenta.astro";
+import TarjetaRegalos from "../components/TarjetaRegalos.astro";
+import TarjetaRestriccion from "../components/TarjetaRestriccion.astro";
+import TarjetaProhibido from "../components/TarjetaProhibido.astro";
+import TarjetaConfirmar from "../components/TarjetaConfirmar.astro";
+import TarjetaDespedida from "../components/TarjetaDespedida.astro";
+import Versiculo from "../components/versiculo.astro";
+---
+
+<Layout title="Patricia & Jose | Nuestra Boda">
+    <Portada />
+
+    <div id="contenido-principal">
+        <NombresFlores />
+        <Cita2 />
+        <Dedicatoria />
+
+        <section class="relative pt-0 pb-28 overflow-hidden -mt-24 z-10">
+            <div
+                class="relative mx-auto"
+                style="max-width:380px; padding: 0 10px;"
+            >
+                <!-- 1. HISTORIA — izquierda -->
+                <div class="relative z-[1] w-[58%] mr-auto">
+                    <TarjetaHistoria />
+                </div>
+
+                <!-- 2. NUESTROS PADRES — derecha -->
+                <div
+                    class="relative z-[2] w-[58%] ml-auto"
+                    style="margin-top: -20px;"
+                >
+                    <TarjetaCeremonia />
+                </div>
+
+                <!-- 3. CEREMONIA — izquierda -->
+                <div
+                    class="relative z-[3] w-[58%] mr-auto"
+                    style="margin-top: -45px;"
+                >
+                    <TarjetaRecepcion />
+                </div>
+
+                <!-- 4. ITINERARIO — derecha -->
+                <div
+                    class="relative z-[4] w-[58%] ml-auto"
+                    style="margin-top: -20px;"
+                >
+                    <TarjetaItinerario />
+                </div>
+
+                <!-- 5. VESTIMENTA — izquierda -->
+                <div
+                    class="relative z-[5] w-[45%] mr-auto"
+                    style="margin-top: -60px;"
+                >
+                    <TarjetaVestimenta />
+                </div>
+
+                <!-- 6. REGALOS — derecha -->
+                <div
+                    class="relative z-[6] w-[58%] ml-auto"
+                    style="margin-top: -25px;"
+                >
+                    <TarjetaRegalos />
+                </div>
+
+                 <!-- 7. RESTRICCIÓN — desactivada -->
+                <div
+                    class="relative z-[7] w-[58%] mr-auto"
+                    style="margin-top: -20px;"
+                >
+                    <TarjetaRestriccion />
+                </div>
+                
+
+                <!-- 8. SOLO ADULTOS — desactivada
+                <div
+                    class="relative z-[8] w-[45%] ml-auto"
+                    style="margin-top: -30px;"
+                >
+                    <TarjetaProhibido />
+                </div>
+                -->
+
+                <!-- 9. CONFIRMAR — derecha -->
+                <div
+                    class="relative z-[9] w-[58%] ml-auto"
+                    style="margin-top: -30px;"
+                >
+                    <TarjetaConfirmar />
+                </div>
+
+                <!-- 10 y 11. FOTOS — desactivadas
+                <div
+                    id="foto2-stack"
+                    class="relative z-[10] w-[55%] ml-auto"
+                    style="margin-top: -10px;"
+                >
+                    <img
+                        src="/imagenes/foto5.png"
+                        alt="Foto"
+                        class="w-full object-contain drop-shadow-xl"
+                    />
+                </div>
+
+                <div
+                    id="foto3-stack"
+                    class="relative z-[11] w-[55%] mr-auto"
+                    style="margin-top: -50px;"
+                >
+                    <img
+                        src="/imagenes/foto4.png"
+                        alt="Foto"
+                        class="w-full object-contain drop-shadow-xl"
+                    />
+                </div>
+                -->
+
+                <!-- 12. DESPEDIDA — izquierda -->
+                <div
+                    class="relative z-[12] w-[58%] mr-auto"
+                    style="margin-top: -20px;"
+                >
+                    <TarjetaDespedida />
+                </div>
+
+                <!-- 13. FOTO ANILLO — derecha -->
+                <div
+                    id="foto-anillo"
+                    class="relative z-[13] w-[52%] ml-auto"
+                    style="margin-top: -30px;"
+                >
+                    <img
+                        src="/imagenes/foto4.png"
+                        alt="Anillo de compromiso"
+                        class="w-full object-contain drop-shadow-xl"
+                    />
+                </div>
+
+                <!-- 14. VERSÍCULO — izquierda -->
+                <div
+                    class="relative z-[14] w-[58%] mr-auto"
+                    style="margin-top: -60px;"
+                >
+                    <Versiculo />
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.fromTo(
+            "#foto-anillo",
+            { opacity: 0, x: 40 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#foto-anillo",
+                    start: "top 90%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+    </script>
+
+    <!-- Animaciones de las fotos desactivadas junto con sus bloques
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.fromTo(
+            "#foto2-stack",
+            { opacity: 0, x: -40 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#foto2-stack",
+                    start: "top 90%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+
+        gsap.fromTo(
+            "#foto3-stack",
+            { opacity: 0, x: 40 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#foto3-stack",
+                    start: "top 90%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+    </script>
+    -->
+</Layout>

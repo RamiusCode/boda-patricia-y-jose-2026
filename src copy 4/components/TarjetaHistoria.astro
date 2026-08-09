@@ -1,0 +1,43 @@
+---
+---
+<div class="tarjeta-historia w-full">
+  <div class="fondo-palorosa shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <h2 class="font-cormorant text-xl text-[#122a4d] uppercase font-semibold mb-1">Nuestro Comienzo</h2>
+
+      <div class="flex items-center gap-2 mb-3">
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+        <span class="text-[#c98d88] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#122a4d] leading-relaxed">
+        Dicen que las mejores historias comienzan cuando menos lo esperamos.
+        La nuestra fue inesperada, creció con cada sonrisa, se fortaleció con
+        cada desafío y floreció gracias al amor, el respeto y los sueños
+        construidos. Ahora hemos decidido unir nuestras vidas para siempre y
+        comenzar una nueva aventura juntos como esposos.
+      </p>
+
+      <div class="flex items-center gap-2 mt-3">
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+        <span class="text-[#c98d88] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c98d88]"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-historia",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-historia", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

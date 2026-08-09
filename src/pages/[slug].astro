@@ -1,0 +1,19 @@
+---
+// src/pages/[slug].astro — una página por invitado de "lista de invitados.txt"
+import Layout from "../layouts/Layout.astro";
+import Invitacion from "../components/Invitacion.astro";
+import { leerInvitados } from "../data/invitados";
+
+export function getStaticPaths() {
+    return leerInvitados().map((inv) => ({
+        params: { slug: inv.slug },
+        props: { invitado: inv.nombre, pases: inv.pases },
+    }));
+}
+
+const { invitado, pases } = Astro.props;
+---
+
+<Layout title={`Patricia & Jose | ${invitado}`}>
+    <Invitacion invitado={invitado} pases={pases} />
+</Layout>
