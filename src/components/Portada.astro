@@ -4,64 +4,72 @@
 
 <section
     id="portada-sobre"
-    class="fixed inset-0 w-full h-screen z-50 overflow-hidden"
+    class="fixed inset-0 w-full h-screen z-50 overflow-hidden flex justify-center"
     style="background-color: #f4f0e6;"
 >
-    <!-- SOBRE - fondo que ocupa todo el ancho de la pantalla -->
-    <img
-        id="sobre-img"
-        src="/imagenes/sobreportada.webp"
-        alt="Sobre de invitación"
-        class="absolute top-0 left-0 w-full h-full object-cover object-top"
-    />
-
-    <!-- SELLO / BOTÓN - centrado sobre la imagen -->
-    <div class="absolute inset-0 flex items-center justify-center z-20">
-        <button
-            id="btn-sello"
-            class="cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none"
-        >
-            <img
-                src="/imagenes/boton.png"
-                alt="Sello"
-                class="w-28 h-28 md:w-32 md:h-32"
-                style="filter: drop-shadow(0 5px 16px rgba(18, 42, 77, 0.4));"
-            />
-        </button>
-    </div>
-
-    <!-- TEXTO - posicionado sobre la portada -->
+    <!-- Columna con proporción de teléfono (430 x 932).
+         El ancho se deriva de la altura, así el recorte del sobre
+         es idéntico en móvil, tablet, laptop y monitor. -->
     <div
-        id="texto-portada"
-        class="absolute bottom-[12%] left-0 right-0 text-center z-20 px-6 flex flex-col items-center"
+        class="relative h-full overflow-hidden"
+        style="width: min(430px, 100vw, calc(100dvh * 430 / 932));"
     >
-        <p
-            class="font-cormorant uppercase tracking-[0.32em] text-sm md:text-base font-semibold"
-            style="color: #122a4d;"
+        <!-- SOBRE - fondo que ocupa todo el ancho de la columna -->
+        <img
+            id="sobre-img"
+            src="/imagenes/sobreportada.webp"
+            alt="Sobre de invitación"
+            class="absolute top-0 left-0 w-full h-full object-cover object-top"
+        />
+
+        <!-- SELLO / BOTÓN - centrado sobre la imagen -->
+        <div class="absolute inset-0 flex items-center justify-center z-20">
+            <button
+                id="btn-sello"
+                class="cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none"
+            >
+                <img
+                    src="/imagenes/boton.png"
+                    alt="Sello"
+                    class="w-28 h-28"
+                    style="filter: drop-shadow(0 5px 16px rgba(18, 42, 77, 0.4));"
+                />
+            </button>
+        </div>
+
+        <!-- TEXTO - posicionado sobre la portada -->
+        <div
+            id="texto-portada"
+            class="absolute bottom-[12%] left-0 right-0 text-center z-20 px-6 flex flex-col items-center"
         >
-            DALE CLIC AL SELLO
-        </p>
-        <p
-            class="font-cormorant uppercase tracking-normal text-sm md:text-base font-medium mt-0.5"
-            style="color: #122a4d;"
-        >
-            PARA INGRESAR A LA INVITACIÓN
-        </p>
-        <p
-            class="font-crimson italic text-xl md:text-2xl mt-4"
-            style="color: #122a4d;"
-        >
-            Atentamente:
-        </p>
-        <h2
-            class="font-great-vibes text-[2.6rem] md:text-[3.2rem] mt-2 leading-[1.35] whitespace-nowrap"
-            style="color: #c98d88;"
-        >
-            Patricia <span
-                class="text-[0.6em] align-middle"
-                style="color: #122a4d;">&amp;</span
-            > Jose
-        </h2>
+            <p
+                class="font-cormorant uppercase tracking-[0.32em] text-sm font-semibold"
+                style="color: #122a4d;"
+            >
+                DALE CLIC AL SELLO
+            </p>
+            <p
+                class="font-cormorant uppercase tracking-normal text-sm font-medium mt-0.5"
+                style="color: #122a4d;"
+            >
+                PARA INGRESAR A LA INVITACIÓN
+            </p>
+            <p
+                class="font-crimson italic text-xl mt-4"
+                style="color: #122a4d;"
+            >
+                Atentamente:
+            </p>
+            <h2
+                class="font-great-vibes text-[2.6rem] mt-2 leading-[1.35] whitespace-nowrap"
+                style="color: #c98d88;"
+            >
+                Patricia <span
+                    class="text-[0.6em] align-middle"
+                    style="color: #a35f5a;">y</span
+                > José
+            </h2>
+        </div>
     </div>
 </section>
 
@@ -124,6 +132,25 @@
                 },
                 onComplete: () => {
                     portada?.remove();
+
+                    // El botón de música vive oculto hasta abrir el sobre
+                    const botonMusica = document.getElementById(
+                        "boton-musica-flotante",
+                    );
+                    if (botonMusica) {
+                        botonMusica.classList.remove("hidden");
+                        gsap.fromTo(
+                            botonMusica,
+                            { opacity: 0, scale: 0, rotation: -180 },
+                            {
+                                opacity: 1,
+                                scale: 1,
+                                rotation: 0,
+                                duration: 0.8,
+                                ease: "back.out(1.7)",
+                            },
+                        );
+                    }
                 },
             });
         });

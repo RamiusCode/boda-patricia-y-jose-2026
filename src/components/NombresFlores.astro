@@ -19,12 +19,12 @@ const FECHA_BODA = "5 de septiembre 2026";
   <!-- Frase manuscrita, lado izquierdo -->
   <div
     id="frase-alas"
-    class="absolute left-5 top-[52%] z-[9] pointer-events-none animate-[fade-in_1.5s_ease-out_1.8s_both]"
+    class="absolute left-1 top-[52%] z-[9] pointer-events-none animate-[fade-in_1.5s_ease-out_1.8s_both]"
   >
     <p
-      class="font-charm text-white text-[20px] leading-[1.25] max-w-[125px] text-center -rotate-12 origin-left drop-shadow-[0_1px_5px_rgba(0,0,0,0.85)]"
+      class="font-great-vibes text-white text-[24px] leading-[1.3] max-w-[135px] text-center -rotate-12 origin-left drop-shadow-[0_1px_5px_rgba(0,0,0,0.85)]"
     >
-      Dos alas, un destino
+      Dos almas, un destino
     </p>
   </div>
 
@@ -120,12 +120,12 @@ const FECHA_BODA = "5 de septiembre 2026";
     class="absolute inset-0 z-[10] text-center px-6 flex flex-col items-center"
   >
     <!-- Nombres novios -->
-    <div class="mt-10 animate-[slide-up_1.5s_ease-out_0.2s_both] text-center">
+    <div class="mt-3 animate-[slide-up_1.5s_ease-out_0.2s_both] text-center">
       <p class="font-cormorant uppercase tracking-[0.32em] text-sm md:text-base text-white/85 mb-3 drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
         Nuestra Boda Civil
       </p>
       <h1 class="font-great-vibes text-[2.9rem] md:text-[3.6rem] leading-[1.35] whitespace-nowrap text-[#e3b7b3] drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-        Patricia <span class="text-white text-[0.6em] align-middle">&amp;</span> Jose
+        Patricia <span class="text-white text-[0.6em] align-middle">&amp;</span> José
       </h1>
     </div>
 
@@ -165,16 +165,8 @@ const FECHA_BODA = "5 de septiembre 2026";
     <p class="font-cormorant italic text-[#e3b7b3] text-lg tracking-widest drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
       Desliza hacia abajo
     </p>
-    <div class="flex flex-col items-center -space-y-2">
+    <div class="flex flex-col items-center">
       <svg class="w-6 h-6 text-[#e3b7b3] drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] animate-[chevron-flow_1.8s_ease-in-out_infinite]"
-        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-      </svg>
-      <svg class="w-6 h-6 text-[#e3b7b3]/65 animate-[chevron-flow_1.8s_ease-in-out_infinite_0.18s]"
-        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
-      </svg>
-      <svg class="w-6 h-6 text-[#e3b7b3]/30 animate-[chevron-flow_1.8s_ease-in-out_infinite_0.36s]"
         fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
       </svg>
@@ -182,7 +174,8 @@ const FECHA_BODA = "5 de septiembre 2026";
   </div>
 
   <!-- 🎵 BOTÓN FLOTANTE DE MÚSICA -->
-  <div class="fixed bottom-6 right-6 z-[9999]" id="boton-musica-flotante">
+  <!-- Oculto hasta que se abre el sobre de la portada -->
+  <div class="hidden fixed bottom-6 right-6 z-[9999]" id="boton-musica-flotante">
     <button
       id="toggle-musica-global"
       class="group relative w-14 h-14 bg-white/80 hover:bg-white/90 backdrop-blur-md rounded-full shadow-lg hover:shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 border border-white/40"
@@ -473,19 +466,25 @@ const FECHA_BODA = "5 de septiembre 2026";
       });
     }
 
-    // ═══ ANIMACIÓN DE ENTRADA DEL BOTÓN ═══
-    gsap.fromTo(
-      "#boton-musica-flotante",
-      { opacity: 0, scale: 0, rotation: -180 },
-      {
-        opacity: 1,
-        scale: 1,
-        rotation: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-        delay: 1.5,
-      },
-    );
+    // ═══ ENTRADA DEL BOTÓN ═══
+    // Normalmente lo revela Portada.astro al abrir el sobre.
+    // Si esta página no tiene portada, se muestra de una vez.
+    if (!document.getElementById("portada-sobre")) {
+      const boton = document.getElementById("boton-musica-flotante");
+      boton?.classList.remove("hidden");
+      gsap.fromTo(
+        "#boton-musica-flotante",
+        { opacity: 0, scale: 0, rotation: -180 },
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          delay: 1.5,
+        },
+      );
+    }
 
     // ═══ TOGGLE AL HACER CLIC - TRANSICIONES RÁPIDAS ═══
     botonToggle?.addEventListener("click", () => {
