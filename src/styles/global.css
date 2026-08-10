@@ -48,6 +48,21 @@
 }
 
 
+/* Fuente personalizada Amoresa */
+@font-face {
+  font-family: 'Amoresa';
+  /* El %20 es el espacio del nombre del archivo: evita fallos en servidores
+     que no toleran espacios sin codificar en la URL */
+  src: url('/fonts/Amoresa%20Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-amoresa {
+  font-family: 'Amoresa', cursive !important;
+}
+
 /* Fuente personalizada Tangerine */
 @font-face {
   font-family: 'Tangerine Bold';
